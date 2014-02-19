@@ -1,0 +1,16 @@
+{
+	"name": "addwiki/mediawiki-datamodel",
+	"type": "library",
+	"description": "A Mediawiki datamodel",
+	"keywords": ["Mediawiki"],
+	"authors": [
+		{
+			"name": "Addshore"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"Mediawiki\\DataModel\\": "src/"
+		}
+	}
+}
