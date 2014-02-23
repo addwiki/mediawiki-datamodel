@@ -23,6 +23,11 @@ class Revision {
 	protected $initialHash;
 
 	/**
+	 * @var RevisionInfo
+	 */
+	protected $info;
+
+	/**
 	 * @param mixed $content
 	 * @param int|null $id
 	 * @param RevisionInfo|null $revisionInfo
@@ -52,7 +57,7 @@ class Revision {
 	}
 
 	/**
-	 * @return RevisionInfo|null
+	 * @return RevisionInfo
 	 */
 	public function getInfo() {
 		return $this->info;
@@ -78,7 +83,17 @@ class Revision {
 		if( is_object( $content ) ) {
 			$content = clone $content;
 		}
-		return new self( $content , null, new RevisionInfo( null, $revision->getInfo()->getTimestamp(), $revision->getId() ) );
+		return new self(
+			$content ,
+			null,
+			new RevisionInfo(
+				null,
+				new BaseInfo(
+					$revision->getId(),
+					$revision->getInfo()->getBaseInfo()->getTimestamp()
+				)
+			)
+		);
 	}
 
 }

@@ -10,48 +10,37 @@ class RevisionInfo {
 	protected $user;
 
 	/**
-	 * @var EditFlags|null
+	 * @var EditFlags
 	 */
 	protected $flags;
 
 	/**
-	 * @var string|null
+	 * @var BaseInfo
 	 */
-	protected $timestamp;
-
-	/**
-	 * @var int baserev Id of the revision
-	 */
-	protected $baseRevId;
+	protected $baseInfo;
 
 	/**
 	 * @param EditFlags|null $flags
-	 * @param string|null $timestamp
-	 * @param int|null $baseRevId
+	 * @param BaseInfo|null $baseInfo
 	 * @param string|null $user
 	 */
-	public function __construct( EditFlags $flags = null, $timestamp = null, $baseRevId = null,  $user = null ) {
+	public function __construct( EditFlags $flags = null, BaseInfo $baseInfo = null,  $user = null ) {
 		if( is_null( $flags ) ) {
 			$flags = new EditFlags();
 		}
+		if( is_null( $baseInfo ) ) {
+			$baseInfo = new BaseInfo();
+		}
 		$this->flags = $flags;
-		$this->timestamp = $timestamp;
-		$this->baseRevId = $baseRevId;
+		$this->baseInfo = $baseInfo;
 		$this->user = $user;
 	}
 
 	/**
-	 * @return EditFlags|null
+	 * @return EditFlags
 	 */
 	public function getFlags() {
 		return $this->flags;
-	}
-
-	/**
-	 * @return string|null
-	 */
-	public function getTimestamp() {
-		return $this->timestamp;
 	}
 
 	/**
@@ -62,10 +51,10 @@ class RevisionInfo {
 	}
 
 	/**
-	 * @return int|null
+	 * @return BaseInfo
 	 */
-	public function getBaseRevId() {
-		return $this->baseRevId;
+	public function getBaseInfo() {
+		return $this->baseInfo;
 	}
 
 }

@@ -36,7 +36,7 @@ class RevisionTest extends \PHPUnit_Framework_TestCase {
 		$startRev = new Revision( 'foo', 1 );
 		$newRev = Revision::newFromRevision( $startRev );
 		$this->assertEquals( $startRev->getContent(), $newRev->getContent() );
-		$this->assertEquals( $startRev->getId(), $newRev->getInfo()->getBaseRevId() );
+		$this->assertEquals( $startRev->getId(), $newRev->getInfo()->getBaseInfo()->getRevid() );
 	}
 
 	public function testNewFromRevisionClonesObjects() {
@@ -46,7 +46,7 @@ class RevisionTest extends \PHPUnit_Framework_TestCase {
 		$newRev->getContent()->foo = 'foo';
 
 		$this->assertNotEquals( $startRev->getContent(), $newRev->getContent() );
-		$this->assertEquals( $startRev->getId(), $newRev->getInfo()->getBaseRevId() );
+		$this->assertEquals( $startRev->getId(), $newRev->getInfo()->getBaseInfo()->getRevid() );
 	}
 
 } 
