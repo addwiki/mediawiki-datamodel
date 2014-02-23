@@ -8,4 +8,4 @@ mediawiki-datamodel
 
 Use composer to install the library and all its dependencies:
 
-    composer require "addwiki/mediawiki-datamodel:0.1.*"
+    composer require "addwiki/mediawiki-datamodel:0.2.*"
