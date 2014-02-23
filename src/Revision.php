@@ -13,6 +13,11 @@ class Revision {
 	protected $id;
 
 	/**
+	 * @var int|null of the page for the revision
+	 */
+	protected $pageId;
+
+	/**
 	 * @var mixed
 	 */
 	protected $content;
@@ -29,15 +34,17 @@ class Revision {
 
 	/**
 	 * @param mixed $content
+	 * @param int|null $pageId
 	 * @param int|null $id
 	 * @param RevisionInfo|null $revisionInfo
 	 */
-	public function __construct( $content, $id = null, $revisionInfo = null ) {
+	public function __construct( $content, $pageId = null, $id = null, $revisionInfo = null ) {
 		if( is_null( $revisionInfo ) ) {
 			$revisionInfo = new RevisionInfo();
 		}
 		$this->content = $content;
 		$this->initialHash = sha1( serialize( $content ) );
+		$this->pageId = $pageId;
 		$this->id = $id;
 		$this->info = $revisionInfo;
 	}
@@ -54,6 +61,13 @@ class Revision {
 	 */
 	public function getId() {
 		return $this->id;
+	}
+
+	/**
+	 * @return int|null
+	 */
+	public function getPageId() {
+		return $this->pageId;
 	}
 
 	/**

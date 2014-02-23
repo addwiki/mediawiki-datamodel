@@ -20,9 +20,9 @@ class RevisionsTest extends \PHPUnit_Framework_TestCase {
 
 	public function provideValidConstruction() {
 		//todo mock these
-		$rev1 = new Revision( '1', 1 );
-		$rev2 = new Revision( '2', 2 );
-		$rev4 = new Revision( '4', 4 );
+		$rev1 = new Revision( '1', 1, 1 );
+		$rev2 = new Revision( '2', 1, 2 );
+		$rev4 = new Revision( '4', 1, 4 );
 
 		return array(
 			array( array( $rev1 ), array( 1 => $rev1 ) ),

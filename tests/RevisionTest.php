@@ -13,9 +13,10 @@ class RevisionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider provideValidConstruction
 	 */
-	public function testValidConstruction( $content, $id, $details ) {
-		$rev = new Revision( $content, $id, $details );
+	public function testValidConstruction( $content, $pageid, $id, $details ) {
+		$rev = new Revision( $content, $pageid, $id, $details );
 		$this->assertEquals( $content, $rev->getContent() );
+		$this->assertEquals( $pageid, $rev->getPageId() );
 		$this->assertEquals( $id, $rev->getId() );
 		if( !is_null( $details ) ) {
 			$this->assertEquals( $details, $rev->getInfo() );
@@ -27,8 +28,8 @@ class RevisionTest extends \PHPUnit_Framework_TestCase {
 
 	public function provideValidConstruction() {
 		return array(
-			array( '', 2 , null ),
-			array( new \stdClass(), 12345, new RevisionInfo() ),
+			array( '', 2, 2 , null ),
+			array( new \stdClass(), 999, 12345, new RevisionInfo() ),
 		);
 	}
 
