@@ -5,15 +5,15 @@ namespace Mediawiki\DataModel;
 class RevisionDetails {
 
 	/**
-	 * @var string
+	 * @var string|null
 	 */
 	protected $user;
 	/**
-	 * @var EditFlags
+	 * @var EditFlags|null
 	 */
 	protected $flags;
 	/**
-	 * @var string
+	 * @var string|null
 	 */
 	protected $timestamp;
 
@@ -23,16 +23,13 @@ class RevisionDetails {
 	 * @param string|null $user
 	 */
 	public function __construct( EditFlags $flags = null, $timestamp = null, $user = null ) {
-		if( is_null( $flags ) ) {
-			$flags = new EditFlags();
-		}
 		$this->flags = $flags;
 		$this->timestamp = $timestamp;
 		$this->user = $user;
 	}
 
 	/**
-	 * @return EditFlags
+	 * @return EditFlags|null
 	 */
 	public function getFlags() {
 		return $this->flags;
