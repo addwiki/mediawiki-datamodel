@@ -7,16 +7,11 @@ These are the release notes for the [mediawiki-datamodel](README.md).
 * Revision enhanced to allow more flexibility, Constructor and public functions have changed
 * contentmodel has been removed from the Page class
 
-#### Additions
-
-* Introduced the RevisionInfo class
-* Introduced the BaseInfo class
-
 ## Version 0.1 (2014-02-23)
 
 Initial release with the following features:
 
-* EditFlags
+* EditInfo
 * Page
 * Revision
 * Revisions

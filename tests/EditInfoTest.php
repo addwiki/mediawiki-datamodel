@@ -2,19 +2,19 @@
 
 namespace Mediawiki\DataModel\Test;
 
-use Mediawiki\DataModel\EditFlags;
+use Mediawiki\DataModel\EditInfo;
 use PHPUnit_Framework_TestCase;
 
 /**
- * @covers \Mediawiki\DataModel\EditFlags
+ * @covers \Mediawiki\DataModel\EditInfo
  */
-class EditFlagsTest extends PHPUnit_Framework_TestCase {
+class EditInfoTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * @dataProvider provideValidConstruction
 	 */
 	public function testValidConstruction( $sum, $minor, $bot ) {
-		$flags = new EditFlags( $sum, $minor, $bot );
+		$flags = new EditInfo( $sum, $minor, $bot );
 		$this->assertEquals( $sum, $flags->getSummary() );
 		$this->assertEquals( $minor, $flags->getMinor() );
 		$this->assertEquals( $bot, $flags->getBot() );
@@ -22,11 +22,11 @@ class EditFlagsTest extends PHPUnit_Framework_TestCase {
 
 	public function provideValidConstruction() {
 		return array(
-			array( '', EditFlags::MINOR, EditFlags::BOT ),
-			array( '', EditFlags::MINOR, EditFlags::NOTBOT ),
-			array( '', EditFlags::NOTMINOR, EditFlags::BOT ),
-			array( '', EditFlags::NOTMINOR, EditFlags::NOTBOT ),
-			array( 'FOO', EditFlags::NOTMINOR, EditFlags::NOTBOT ),
+			array( '', EditInfo::MINOR, EditInfo::BOT ),
+			array( '', EditInfo::MINOR, EditInfo::NOTBOT ),
+			array( '', EditInfo::NOTMINOR, EditInfo::BOT ),
+			array( '', EditInfo::NOTMINOR, EditInfo::NOTBOT ),
+			array( 'FOO', EditInfo::NOTMINOR, EditInfo::NOTBOT ),
 		);
 	}
 
@@ -35,7 +35,7 @@ class EditFlagsTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testInvalidConstruction( $sum, $minor, $bot ) {
 		$this->setExpectedException( 'InvalidArgumentException' );
-		new EditFlags( $sum, $minor, $bot );
+		new EditInfo( $sum, $minor, $bot );
 	}
 
 	public function provideInvalidConstruction() {

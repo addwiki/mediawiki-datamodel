@@ -28,25 +28,39 @@ class Revision {
 	protected $initialHash;
 
 	/**
-	 * @var RevisionInfo
+	 * @var EditInfo
 	 */
-	protected $info;
+	protected $editInfo;
+
+	/**
+	 * @var null|string
+	 */
+	protected $user;
+
+	/**
+	 * @var null|string
+	 */
+	protected $timestamp;
 
 	/**
 	 * @param mixed $content
 	 * @param int|null $pageId
-	 * @param int|null $id
-	 * @param RevisionInfo|null $revisionInfo
+	 * @param int|null $revId
+	 * @param EditInfo|null $editInfo
+	 * @param string|null $user
+	 * @param string|null $timestamp
 	 */
-	public function __construct( $content, $pageId = null, $id = null, $revisionInfo = null ) {
-		if( is_null( $revisionInfo ) ) {
-			$revisionInfo = new RevisionInfo();
+	public function __construct( $content, $pageId = null, $revId = null, EditInfo $editInfo = null, $user = null, $timestamp = null ) {
+		if( is_null( $editInfo ) ) {
+			$editInfo = new EditInfo();
 		}
 		$this->content = $content;
 		$this->initialHash = sha1( serialize( $content ) );
 		$this->pageId = $pageId;
-		$this->id = $id;
-		$this->info = $revisionInfo;
+		$this->id = $revId;
+		$this->editInfo = $editInfo;
+		$this->user = $user;
+		$this->timestamp = $timestamp;
 	}
 
 	/**
@@ -54,6 +68,13 @@ class Revision {
 	 */
 	public function getContent() {
 		return $this->content;
+	}
+
+	/**
+	 * @return EditInfo
+	 */
+	public function getEditInfo() {
+		return $this->editInfo;
 	}
 
 	/**
@@ -71,43 +92,25 @@ class Revision {
 	}
 
 	/**
-	 * @return RevisionInfo
+	 * @return null|string
 	 */
-	public function getInfo() {
-		return $this->info;
+	public function getUser() {
+		return $this->user;
 	}
 
 	/**
-	 * Has the content been changed since object construction
+	 * @return null|string
+	 */
+	public function getTimestamp() {
+		return $this->timestamp;
+	}
+
+	/**
+	 * Has the content been changed since object construction (this shouldn't happen!)
 	 * @return bool
 	 */
 	public function hasChanged() {
 		return $this->initialHash !== sha1( serialize( $this->content ) );
-	}
-
-	/**
-	 * Convenience function for creating new revisions
-	 *
-	 * @param Revision $revision
-	 *
-	 * @return Revision
-	 */
-	public static function newFromRevision( $revision ) {
-		$content = $revision->getContent();
-		if( is_object( $content ) ) {
-			$content = clone $content;
-		}
-		return new self(
-			$content ,
-			null,
-			new RevisionInfo(
-				null,
-				new BaseInfo(
-					$revision->getId(),
-					$revision->getInfo()->getBaseInfo()->getTimestamp()
-				)
-			)
-		);
 	}
 
 }

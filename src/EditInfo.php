@@ -7,7 +7,7 @@ use InvalidArgumentException;
 /**
  * Represents flags that can be used when edits are made
  */
-class EditFlags {
+class EditInfo {
 
 	//minor flags
 	const MINOR = true;
@@ -17,11 +17,11 @@ class EditFlags {
 	const NOTBOT = false;
 
 	/**
-	 * @var self::MINOR|self::NOTMINOR
+	 * @var EditInfo::MINOR|self::NOTMINOR
 	 */
 	protected $minor = false;
 	/**
-	 * @var self::BOT|self::NOTBOT
+	 * @var EditInfo::BOT|self::NOTBOT
 	 */
 	protected $bot = false;
 	/**
@@ -53,14 +53,14 @@ class EditFlags {
 	}
 
 	/**
-	 * @return self::BOT|self::NOTBOT
+	 * @return EditInfo::BOT|self::NOTBOT
 	 */
 	public function getBot() {
 		return $this->bot;
 	}
 
 	/**
-	 * @return self::MINOR|self::NOTMINOR
+	 * @return EditInfo::MINOR|self::NOTMINOR
 	 */
 	public function getMinor() {
 		return $this->minor;
