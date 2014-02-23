@@ -3,7 +3,7 @@
 namespace Mediawiki\DataModel\Test;
 
 use Mediawiki\DataModel\Revision;
-use Mediawiki\DataModel\RevisionDetails;
+use Mediawiki\DataModel\RevisionInfo;
 
 /**
  * @covers \Mediawiki\DataModel\Revision
@@ -13,19 +13,22 @@ class RevisionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider provideValidConstruction
 	 */
-	public function testValidConstruction( $content, $id, $baserev, $details ) {
-		$rev = new Revision( $content, $id, $baserev, $details );
+	public function testValidConstruction( $content, $id, $details ) {
+		$rev = new Revision( $content, $id, $details );
 		$this->assertEquals( $content, $rev->getContent() );
 		$this->assertEquals( $id, $rev->getId() );
-		$this->assertEquals( $baserev, $rev->getBaseRevId() );
-		$this->assertEquals( $details, $rev->getDetails() );
+		if( !is_null( $details ) ) {
+			$this->assertEquals( $details, $rev->getInfo() );
+		} else {
+			$this->assertInstanceOf( '\Mediawiki\DataModel\RevisionInfo', $rev->getInfo() );
+		}
 		$this->assertFalse( $rev->hasChanged() );
 	}
 
 	public function provideValidConstruction() {
 		return array(
-			array( '', 2, 1, null ),
-			array( new \stdClass(), 12345, 999999, new RevisionDetails() ),
+			array( '', 2 , null ),
+			array( new \stdClass(), 12345, new RevisionInfo() ),
 		);
 	}
 
@@ -33,7 +36,7 @@ class RevisionTest extends \PHPUnit_Framework_TestCase {
 		$startRev = new Revision( 'foo', 1 );
 		$newRev = Revision::newFromRevision( $startRev );
 		$this->assertEquals( $startRev->getContent(), $newRev->getContent() );
-		$this->assertEquals( $startRev->getId(), $newRev->getBaseRevId() );
+		$this->assertEquals( $startRev->getId(), $newRev->getInfo()->getBaseRevId() );
 	}
 
 	public function testNewFromRevisionClonesObjects() {
@@ -43,7 +46,7 @@ class RevisionTest extends \PHPUnit_Framework_TestCase {
 		$newRev->getContent()->foo = 'foo';
 
 		$this->assertNotEquals( $startRev->getContent(), $newRev->getContent() );
-		$this->assertEquals( $startRev->getId(), $newRev->getBaseRevId() );
+		$this->assertEquals( $startRev->getId(), $newRev->getInfo()->getBaseRevId() );
 	}
 
 } 

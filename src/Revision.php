@@ -13,11 +13,6 @@ class Revision {
 	protected $id;
 
 	/**
-	 * @var int baserev Id of the revision
-	 */
-	protected $baseRevId;
-
-	/**
 	 * @var mixed
 	 */
 	protected $content;
@@ -30,15 +25,16 @@ class Revision {
 	/**
 	 * @param mixed $content
 	 * @param int|null $id
-	 * @param int|null $baseRevId
-	 * @param RevisionDetails|null $revisionDetails
+	 * @param RevisionInfo|null $revisionInfo
 	 */
-	public function __construct( $content, $id = null, $baseRevId = null, $revisionDetails = null ) {
+	public function __construct( $content, $id = null, $revisionInfo = null ) {
+		if( is_null( $revisionInfo ) ) {
+			$revisionInfo = new RevisionInfo();
+		}
 		$this->content = $content;
 		$this->initialHash = sha1( serialize( $content ) );
 		$this->id = $id;
-		$this->baseRevId = $baseRevId;
-		$this->details = $revisionDetails;
+		$this->info = $revisionInfo;
 	}
 
 	/**
@@ -56,17 +52,10 @@ class Revision {
 	}
 
 	/**
-	 * @return int|null
+	 * @return RevisionInfo|null
 	 */
-	public function getBaseRevId() {
-		return $this->baseRevId;
-	}
-
-	/**
-	 * @return RevisionDetails|null
-	 */
-	public function getDetails() {
-		return $this->details;
+	public function getInfo() {
+		return $this->info;
 	}
 
 	/**
@@ -89,7 +78,7 @@ class Revision {
 		if( is_object( $content ) ) {
 			$content = clone $content;
 		}
-		return new self( $content , null, $revision->getId() );
+		return new self( $content , null, new RevisionInfo( null, $revision->getInfo()->getTimestamp(), $revision->getId() ) );
 	}
 
 }

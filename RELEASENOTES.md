@@ -9,7 +9,7 @@ These are the release notes for the [mediawiki-datamodel](README.md).
 
 #### Additions
 
-* Introduced the RevisionDetails class
+* Introduced the RevisionInfo class
 
 ## Version 0.1 (2014-02-23)
 
