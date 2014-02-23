@@ -5,6 +5,7 @@ These are the release notes for the [mediawiki-datamodel](README.md).
 ####Compatability  changes
 
 * Revision enhanced to allow more flexibility, Constructor and public functions have changed
+* contentmodel has been removed from the Page class
 
 #### Additions
 
