@@ -2,10 +2,14 @@ These are the release notes for the [mediawiki-datamodel](README.md).
 
 ## Version 0.2 (under development)
 
-####Compatability  changes
+#### Compatability  changes
 
 * Revision enhanced to allow more flexibility, Constructor and public functions have changed
 * contentmodel has been removed from the Page class
+
+#### Enhancments
+
+* Hashable and setable EditInfo class
 
 ## Version 0.1 (2014-02-23)
 

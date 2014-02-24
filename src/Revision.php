@@ -55,12 +55,12 @@ class Revision {
 			$editInfo = new EditInfo();
 		}
 		$this->content = $content;
-		$this->initialHash = sha1( serialize( $content ) );
 		$this->pageId = $pageId;
 		$this->id = $revId;
 		$this->editInfo = $editInfo;
 		$this->user = $user;
 		$this->timestamp = $timestamp;
+		$this->initialHash = $this->getHash();
 	}
 
 	/**
@@ -110,7 +110,14 @@ class Revision {
 	 * @return bool
 	 */
 	public function hasChanged() {
-		return $this->initialHash !== sha1( serialize( $this->content ) );
+		return $this->initialHash !== $this->getHash();
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getHash() {
+		return sha1( serialize( $this->content ) );
 	}
 
 }
