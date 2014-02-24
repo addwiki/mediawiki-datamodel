@@ -58,11 +58,15 @@ class Revisions {
 	}
 
 	/**
-	 * @return Revision
+	 * @return Revision|null Revision or null if there is no revision
 	 */
 	public function getLatest() {
+		if( empty( $this->revisions ) ) {
+			return null;
+		}
 		return $this->revisions[ max( array_keys( $this->revisions ) ) ];
 	}
+
 
 	/**
 	 * @param int $revid
