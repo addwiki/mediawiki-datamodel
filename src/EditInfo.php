@@ -32,11 +32,6 @@ class EditInfo {
 	protected $summary = null;
 
 	/**
-	 * @var string initial hash of the object
-	 */
-	private $initialHash;
-
-	/**
 	 * @param string $summary
 	 * @param bool $minor
 	 * @param bool $bot
@@ -57,7 +52,6 @@ class EditInfo {
 		$this->summary = $summary;
 		$this->bot = $bot;
 		$this->minor = $minor;
-		$this->initialHash = $this->getHash();
 	}
 
 	/**
@@ -79,42 +73,6 @@ class EditInfo {
 	 */
 	public function getSummary() {
 		return $this->summary;
-	}
-
-	/**
-	 * @param EditInfo::BOT|self::NOTBOT $value
-	 */
-	public function setBot( $value ) {
-		$this->bot = $value;
-	}
-
-	/**
-	 * @param EditInfo::MINOR|self::NOTMINOR $value
-	 */
-	public function setMinor( $value ) {
-		$this->minor = $value;
-	}
-
-	/**
-	 * @param string $value
-	 */
-	public function setSummary( $value ) {
-		$this->summary = $value;
-	}
-
-	/**
-	 * Has the content been changed since object construction (this shouldn't happen!)
-	 * @return bool
-	 */
-	public function hasChanged() {
-		return $this->initialHash !== $this->getHash();
-	}
-
-	/**
-	 * @return string
-	 */
-	private function getHash() {
-		return sha1( $this->summary . strval( $this->bot ) . strval( $this->minor ) );
 	}
 
 }
