@@ -19,10 +19,14 @@ class RevisionsTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function provideValidConstruction() {
+		$mockContent = $this->getMockBuilder( 'Mediawiki\DataModel\Content' )
+			->disableOriginalConstructor()
+			->getMock();
+
 		//todo mock these
-		$rev1 = new Revision( '1', 1, 1 );
-		$rev2 = new Revision( '2', 1, 2 );
-		$rev4 = new Revision( '4', 1, 4 );
+		$rev1 = new Revision( $mockContent, 1, 1 );
+		$rev2 = new Revision( $mockContent, 1, 2 );
+		$rev4 = new Revision( $mockContent, 1, 4 );
 
 		return array(
 			array( array( $rev1 ), array( 1 => $rev1 ) ),

@@ -18,14 +18,9 @@ class Revision {
 	protected $pageId;
 
 	/**
-	 * @var mixed
+	 * @var Content
 	 */
 	protected $content;
-
-	/**
-	 * @var string initial hash of the content
-	 */
-	protected $initialHash;
 
 	/**
 	 * @var EditInfo
@@ -43,14 +38,14 @@ class Revision {
 	protected $timestamp;
 
 	/**
-	 * @param mixed $content
+	 * @param Content $content
 	 * @param int|null $pageId
 	 * @param int|null $revId
 	 * @param EditInfo|null $editInfo
 	 * @param string|null $user
 	 * @param string|null $timestamp
 	 */
-	public function __construct( $content, $pageId = null, $revId = null, EditInfo $editInfo = null, $user = null, $timestamp = null ) {
+	public function __construct( Content $content, $pageId = null, $revId = null, EditInfo $editInfo = null, $user = null, $timestamp = null ) {
 		if( is_null( $editInfo ) ) {
 			$editInfo = new EditInfo();
 		}
@@ -60,11 +55,10 @@ class Revision {
 		$this->editInfo = $editInfo;
 		$this->user = $user;
 		$this->timestamp = $timestamp;
-		$this->initialHash = $this->getHash();
 	}
 
 	/**
-	 * @return mixed
+	 * @return Content
 	 */
 	public function getContent() {
 		return $this->content;
@@ -103,21 +97,6 @@ class Revision {
 	 */
 	public function getTimestamp() {
 		return $this->timestamp;
-	}
-
-	/**
-	 * Has the content been changed since object construction (this shouldn't happen!)
-	 * @return bool
-	 */
-	public function hasChanged() {
-		return $this->initialHash !== $this->getHash();
-	}
-
-	/**
-	 * @return string
-	 */
-	private function getHash() {
-		return sha1( serialize( $this->content ) );
 	}
 
 }

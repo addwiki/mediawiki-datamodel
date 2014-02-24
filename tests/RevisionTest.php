@@ -24,21 +24,23 @@ class RevisionTest extends \PHPUnit_Framework_TestCase {
 		}
 		$this->assertEquals( $user, $rev->getUser() );
 		$this->assertEquals( $timestamp, $rev->getTimestamp() );
-		$this->assertFalse( $rev->hasChanged() );
 	}
 
 	public function provideValidConstruction() {
+		$mockContent = $this->getMockBuilder( 'Mediawiki\DataModel\Content' )
+			->disableOriginalConstructor()
+			->getMock();
 		$mockEditInfo = $this->getMockBuilder( '\Mediawiki\DataModel\EditInfo' )
 			->disableOriginalConstructor()
 			->getMock();
 
 		return array(
-			array( '', null, null, null, null, null ),
-			array( '', 1, null , null, null,null ),
-			array( '', 1, 1 , null, null, null ),
-			array( '', 1, 1 , $mockEditInfo, null, null ),
-			array( '', 1, 1 , $mockEditInfo, 'foo', null ),
-			array( '', 1, 1 , $mockEditInfo, 'foo', '20141212121212' ),
+			array( $mockContent, null, null, null, null, null ),
+			array( $mockContent, 1, null , null, null,null ),
+			array( $mockContent, 1, 1 , null, null, null ),
+			array( $mockContent, 1, 1 , $mockEditInfo, null, null ),
+			array( $mockContent, 1, 1 , $mockEditInfo, 'foo', null ),
+			array( $mockContent, 1, 1 , $mockEditInfo, 'foo', '20141212121212' ),
 		);
 	}
 
