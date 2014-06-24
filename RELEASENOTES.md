@@ -10,6 +10,7 @@ These are the release notes for the [mediawiki-datamodel](README.md).
 
 * Content class
 * WikitextContent class
+* Pages class
 
 
 ## Version 0.2 (2014-02-23)
