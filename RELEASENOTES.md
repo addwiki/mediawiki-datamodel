@@ -1,6 +1,6 @@
 These are the release notes for the [mediawiki-datamodel](README.md).
 
-## Version 0.3 (under development)
+## Version 0.3 (2014-06-24)
 
 #### Compatibility  changes
 
