@@ -4,6 +4,7 @@ namespace Mediawiki\DataModel;
 
 /**
  * Class Representing the content of a revision
+ * @author Adam Shorland
  */
 abstract class Content {
 

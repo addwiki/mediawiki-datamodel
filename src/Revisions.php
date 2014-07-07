@@ -2,15 +2,19 @@
 
 namespace Mediawiki\DataModel;
 
+use InvalidArgumentException;
 use RuntimeException;
 
 /**
  * Represents a collection or revisions
+ * @author Adam Shorland
  */
 class Revisions {
 
-	/** @var Revision[] */
-	protected $revisions;
+	/**
+	 * @var Revision[]
+	 */
+	private $revisions;
 
 	/**
 	 * @param Revisions[] $revisions
@@ -22,8 +26,13 @@ class Revisions {
 
 	/**
 	 * @param Revision[]|Revisions $revisions
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function addRevisions( $revisions ) {
+		if( !is_array( $revisions ) && !$revisions instanceof Revisions ) {
+			throw new InvalidArgumentException( '$revisions needs to either be an array or a Revisions object' );
+		}
 		if( $revisions instanceof Revisions ) {
 			$revisions = $revisions->toArray();
 		}
@@ -67,14 +76,17 @@ class Revisions {
 		return $this->revisions[ max( array_keys( $this->revisions ) ) ];
 	}
 
-
 	/**
 	 * @param int $revid
 	 *
 	 * @throws RuntimeException
+	 * @throws InvalidArgumentException
 	 * @return Revision
 	 */
 	public function get( $revid ){
+		if( !is_int( $revid ) ) {
+			throw new InvalidArgumentException( '$revid needs to be an int' );
+		}
 		if( $this->hasRevisionWithId( $revid ) ){
 			return $this->revisions[$revid];
 		}

@@ -6,6 +6,7 @@ use Mediawiki\DataModel\Page;
 
 /**
  * @covers \Mediawiki\DataModel\Page
+ * @author Adam Shorland
  */
 class PageTest extends \PHPUnit_Framework_TestCase {
 
@@ -20,17 +21,36 @@ class PageTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function provideValidConstruction() {
-		$mockTitle = $this->getMockBuilder( '\Mediawiki\DataModel\Title' )
-			->disableOriginalConstructor()
-			->getMock();
-		$mockRevisions = $this->getMockBuilder( '\Mediawiki\DataModel\Revisions' )
-			->disableOriginalConstructor()
-			->getMock();
-
 		return array(
-			array( $mockTitle, 1, $mockRevisions ),
-			array( $mockTitle, 99999999, $mockRevisions ),
+			array( $this->newMockTitle(), 1, $this->newMockRevisions() ),
+			array( $this->newMockTitle(), 99999999, $this->newMockRevisions() ),
 		);
+	}
+
+	/**
+	 * @dataProvider provideInvalidConstruction
+	 */
+	public function testInvalidConstruction( $title, $id, $revisions ) {
+		$this->setExpectedException( 'InvalidArgumentException' );
+		new Page( $title, $id, $revisions );
+	}
+
+	public function provideInvalidConstruction() {
+		return array(
+			array( $this->newMockTitle(), 'foo', $this->newMockRevisions() ),
+		);
+	}
+
+	private function newMockTitle() {
+		return $this->getMockBuilder( '\Mediawiki\DataModel\Title' )
+			->disableOriginalConstructor()
+			->getMock();
+	}
+
+	private function newMockRevisions() {
+		return $this->getMockBuilder( '\Mediawiki\DataModel\Revisions' )
+			->disableOriginalConstructor()
+			->getMock();
 	}
 
 } 

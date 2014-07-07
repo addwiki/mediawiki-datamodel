@@ -2,6 +2,11 @@
 
 namespace Mediawiki\DataModel;
 
+use InvalidArgumentException;
+
+/**
+ * @author Adam Shorland
+ */
 class WikitextContent extends Content {
 
 	const contentModel = 'wikitext';
@@ -9,12 +14,17 @@ class WikitextContent extends Content {
 	/**
 	 * @var string
 	 */
-	protected $text;
+	private $text;
 
 	/**
 	 * @param string $text
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function __construct( $text ) {
+		if( !is_string( $text ) ) {
+			throw new InvalidArgumentException( '$text needs to be a string' );
+		}
 		$this->text = $text;
 		parent::__construct( self::contentModel );
 	}
@@ -35,8 +45,13 @@ class WikitextContent extends Content {
 
 	/**
 	 * @param string $text
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function setText( $text ) {
+		if( !is_string( $text ) ) {
+			throw new InvalidArgumentException( '$text needs to be a string' );
+		}
 		$this->text = $text;
 	}
 

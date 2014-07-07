@@ -6,6 +6,7 @@ use Mediawiki\DataModel\Title;
 
 /**
  * @covers \Mediawiki\DataModel\Title
+ * @author Adam Shorland
  */
 class TitleTest extends \PHPUnit_Framework_TestCase {
 
@@ -23,6 +24,25 @@ class TitleTest extends \PHPUnit_Framework_TestCase {
 			array( 'fooo', 0 ),
 			array( 'Foo:Bar', 15 ),
 			array( 'FooBar:Bar', 9999 ),
+		);
+	}
+
+	/**
+	 * @dataProvider provideInvalidConstruction
+	 */
+	public function testInvalidConstruction( $title, $ns ) {
+		$this->setExpectedException( 'InvalidArgumentException' );
+		new Title( $title, $ns );
+	}
+
+	public function provideInvalidConstruction() {
+		return array(
+			array( array(), array() ),
+			array( 'foo', array() ),
+			array( array(), 1 ),
+			array( null, 1 ),
+			array( null, null ),
+			array( 'foo', null ),
 		);
 	}
 

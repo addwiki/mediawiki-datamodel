@@ -2,29 +2,36 @@
 
 namespace Mediawiki\DataModel;
 
+use InvalidArgumentException;
+
 class Page {
 
 	/**
 	 * @var Revisions
 	 */
-	protected $revisions;
+	private $revisions;
 
 	/**
 	 * @var int
 	 */
-	protected $id;
+	private $id;
 
 	/**
 	 * @var Title
 	 */
-	protected $title;
+	private $title;
 
 	/**
-	 * @param string $title
+	 * @param Title $title
 	 * @param int $id
 	 * @param Revisions $revisions
+	 *
+	 * @throws InvalidArgumentException
 	 */
-	public function __construct( $title, $id, Revisions $revisions ) {
+	public function __construct( Title $title, $id, Revisions $revisions ) {
+		if( !is_int( $id ) ) {
+			throw new InvalidArgumentException( '$id must be an int' );
+		}
 		$this->id = $id;
 		$this->revisions = $revisions;
 		$this->title = $title;

@@ -4,38 +4,39 @@ namespace Mediawiki\DataModel;
 
 /**
  * Representation of a version of content
+ * @author Adam Shorland
  */
 class Revision {
 
 	/**
 	 * @var int Id of the revision
 	 */
-	protected $id;
+	private $id;
 
 	/**
 	 * @var int|null of the page for the revision
 	 */
-	protected $pageId;
+	private $pageId;
 
 	/**
 	 * @var Content
 	 */
-	protected $content;
+	private $content;
 
 	/**
 	 * @var EditInfo
 	 */
-	protected $editInfo;
+	private $editInfo;
 
 	/**
 	 * @var null|string
 	 */
-	protected $user;
+	private $user;
 
 	/**
 	 * @var null|string
 	 */
-	protected $timestamp;
+	private $timestamp;
 
 	/**
 	 * @param Content $content

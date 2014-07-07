@@ -2,23 +2,36 @@
 
 namespace Mediawiki\DataModel;
 
+use InvalidArgumentException;
+
+/**
+ * @author Adam Shorland
+ */
 class Title {
 
 	/**
 	 * @var string
 	 */
-	protected $title;
+	private $title;
 
 	/**
 	 * @var int
 	 */
-	protected $ns;
+	private $ns;
 
 	/**
 	 * @param string $title
 	 * @param int $ns
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function __construct( $title, $ns = 0 ) {
+		if( !is_string( $title ) ) {
+			throw new InvalidArgumentException( '$title must be a string' );
+		}
+		if( !is_int( $ns ) ) {
+			throw new InvalidArgumentException( '$ns must be an int' );
+		}
 		$this->title = $title;
 		$this->ns = $ns;
 	}

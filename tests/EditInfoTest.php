@@ -7,6 +7,7 @@ use PHPUnit_Framework_TestCase;
 
 /**
  * @covers \Mediawiki\DataModel\EditInfo
+ * @author Adam Shorland
  */
 class EditInfoTest extends PHPUnit_Framework_TestCase {
 

@@ -7,6 +7,7 @@ use Mediawiki\DataModel\Revisions;
 
 /**
  * @covers \Mediawiki\DataModel\Revisions
+ * @author Adam Shorland
  */
 class RevisionsTest extends \PHPUnit_Framework_TestCase {
 

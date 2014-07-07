@@ -2,45 +2,48 @@
 
 namespace Mediawiki\DataModel;
 
+use InvalidArgumentException;
+
 /**
  * Represents a mediawiki user
+ * @author Adam Shorland
  */
 class User {
 
 	/**
 	 * @var string
 	 */
-	protected $name;
+	private $name;
 
 	/**
 	 * @var int
 	 */
-	protected $id;
+	private $id;
 
 	/**
 	 * @var int
 	 */
-	protected $editcount;
+	private $editcount;
 
 	/**
 	 * @var string
 	 */
-	protected $registration;
+	private $registration;
 
 	/**
 	 * @var array
 	 */
-	protected $groups;
+	private $groups;
 
 	/**
 	 * @var array
 	 */
-	protected $rights;
+	private $rights;
 
 	/**
 	 * @var string
 	 */
-	protected $gender;
+	private $gender;
 
 	/**
 	 * @param string $name
@@ -50,8 +53,32 @@ class User {
 	 * @param array $groups
 	 * @param array $rights
 	 * @param string $gender
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function __construct( $name, $id, $editcount, $registration, $groups, $rights, $gender ) {
+		if( !is_string( $name ) || empty( $name ) ) {
+			throw new InvalidArgumentException( '$name must be a string and can not be empty' );
+		}
+		if( !is_int( $id ) ) {
+			throw new InvalidArgumentException( '$id must be an int' );
+		}
+		if( !is_int( $editcount ) ) {
+			throw new InvalidArgumentException( '$editcount must be an int' );
+		}
+		if( !is_string( $registration ) ) {
+			throw new InvalidArgumentException( '$registration must be a string' );
+		}
+		if( !is_array( $groups ) ) {
+			throw new InvalidArgumentException( '$groups must be an array' );
+		}
+		if( !is_array( $rights ) ) {
+			throw new InvalidArgumentException( '$rights must be an array' );
+		}
+		if( !is_string( $gender ) ) {
+			throw new InvalidArgumentException( '$gender must be a string' );
+		}
+
 		$this->editcount = $editcount;
 		$this->gender = $gender;
 		$this->groups = $groups;

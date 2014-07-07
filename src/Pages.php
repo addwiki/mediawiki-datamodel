@@ -6,11 +6,14 @@ use RuntimeException;
 
 /**
  * Represents a collection or Page classes
+ * @author Adam Shorland
  */
 class Pages {
 
-	/** @var Page[] */
-	protected $pages;
+	/**
+	 * @var Page[]
+	 */
+	private $pages;
 
 	/**
 	 * @param Page[] $pages
