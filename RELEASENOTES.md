@@ -1,6 +1,9 @@
 These are the release notes for the [mediawiki-datamodel](README.md).
 
-## Version 0.4 (under development)
+## Version 0.5 (under development)
+
+
+## Version 0.4 (2014-07-08)
 
 * Page objects now ONLY accept a Title object for $title in their constructor.
 * InvalidArgumentExceptions are now thrown when objects are constructed with the wrong types.
