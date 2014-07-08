@@ -2,6 +2,7 @@
 
 namespace Mediawiki\DataModel;
 
+use InvalidArgumentException;
 use RuntimeException;
 
 /**
@@ -25,8 +26,13 @@ class Pages {
 
 	/**
 	 * @param Page[]|Pages $pages
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function addPages( $pages ) {
+		if( !is_array( $pages ) && !$pages instanceof Pages ) {
+			throw new InvalidArgumentException( '$pages needs to either be an array or a Pages object' );
+		}
 		if( $pages instanceof Pages ) {
 			$pages = $pages->toArray();
 		}
