@@ -7,6 +7,7 @@ These are the release notes for the [mediawiki-datamodel](README.md).
 
 * Page objects now ONLY accept a Title object for $title in their constructor.
 * InvalidArgumentExceptions are now thrown when objects are constructed with the wrong types.
+* User objects now split up implicitgroups and regular groups, thus $groups is now array[]
 
 
 ## Version 0.3 (2014-06-24)

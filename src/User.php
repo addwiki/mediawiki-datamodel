@@ -50,7 +50,8 @@ class User {
 	 * @param int $id
 	 * @param int $editcount
 	 * @param string $registration
-	 * @param array $groups
+	 * @param array[] $groups groups grouped by type.
+	 *          Keys to use are 'groups' and 'implicitgroups' as returned by the api.
 	 * @param array $rights
 	 * @param string $gender
 	 *
@@ -69,8 +70,8 @@ class User {
 		if( !is_string( $registration ) ) {
 			throw new InvalidArgumentException( '$registration must be a string' );
 		}
-		if( !is_array( $groups ) ) {
-			throw new InvalidArgumentException( '$groups must be an array' );
+		if( !is_array( $groups ) || !array_key_exists( 'groups', $groups ) || !array_key_exists( 'implicitgroups', $groups ) ) {
+			throw new InvalidArgumentException( '$groups must be an array or arrays with keys "groups" and "implicitgroups"' );
 		}
 		if( !is_array( $rights ) ) {
 			throw new InvalidArgumentException( '$rights must be an array' );
@@ -103,10 +104,12 @@ class User {
 	}
 
 	/**
+	 * @param string $type 'groups' or 'implicitgroups'
+	 *
 	 * @return array
 	 */
-	public function getGroups() {
-		return $this->groups;
+	public function getGroups( $type = 'groups' ) {
+		return $this->groups[$type];
 	}
 
 	/**
