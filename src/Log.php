@@ -43,6 +43,11 @@ class Log {
 	private $page;
 
 	/**
+	 * @var array
+	 */
+	private $details;
+
+	/**
 	 * @param int $id
 	 * @param string $type
 	 * @param string $action
@@ -50,8 +55,9 @@ class Log {
 	 * @param string $user
 	 * @param Page $page
 	 * @param string $comment
+	 * @param array $details
 	 */
-	public function __construct( $id, $type, $action, $timestamp, $user, $page, $comment ) {
+	public function __construct( $id, $type, $action, $timestamp, $user, $page, $comment, $details ) {
 		$this->id = $id;
 		$this->type = $type;
 		$this->action = $action;
@@ -59,6 +65,7 @@ class Log {
 		$this->user = $user;
 		$this->page = $page;
 		$this->comment = $comment;
+		$this->details = $details;
 	}
 
 	/**
@@ -117,6 +124,12 @@ class Log {
 		return $this->type;
 	}
 
-
+	/**
+	 * @since 0.5
+	 * @return array
+	 */
+	public function getDetails() {
+		return $this->details;
+	}
 
 }
