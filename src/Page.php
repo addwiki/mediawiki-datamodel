@@ -24,13 +24,16 @@ class Page {
 	/**
 	 * @param Title $title
 	 * @param int $id
-	 * @param Revisions $revisions
+	 * @param Revisions|null $revisions
 	 *
 	 * @throws InvalidArgumentException
 	 */
-	public function __construct( Title $title, $id, Revisions $revisions ) {
+	public function __construct( Title $title, $id, Revisions $revisions = null ) {
 		if( !is_int( $id ) ) {
 			throw new InvalidArgumentException( '$id must be an int' );
+		}
+		if( is_null( $revisions ) ) {
+			$revisions = new Revisions();
 		}
 		$this->id = $id;
 		$this->revisions = $revisions;

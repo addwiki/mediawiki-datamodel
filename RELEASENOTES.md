@@ -3,6 +3,7 @@ These are the release notes for the [mediawiki-datamodel](README.md).
 ## Version 0.5 (under development)
 * Implemented Log class
 * Implemented LogList class
+* Page objects can be constructed without a Revisions object
 
 
 ## Version 0.4 (2014-07-08)

@@ -17,13 +17,18 @@ class PageTest extends \PHPUnit_Framework_TestCase {
 		$page = new Page( $title, $id, $revisions );
 		$this->assertEquals( $title, $page->getTitle() );
 		$this->assertEquals( $id, $page->getId() );
-		$this->assertEquals( $revisions, $page->getRevisions() );
+		if( is_null( $revisions ) ) {
+			$this->assertInstanceOf( 'Mediawiki\DataModel\Revisions', $page->getRevisions() );
+		} else {
+			$this->assertEquals( $revisions, $page->getRevisions() );
+		}
 	}
 
 	public function provideValidConstruction() {
 		return array(
 			array( $this->newMockTitle(), 1, $this->newMockRevisions() ),
 			array( $this->newMockTitle(), 99999999, $this->newMockRevisions() ),
+			array( $this->newMockTitle(), 123, null ),
 		);
 	}
 
