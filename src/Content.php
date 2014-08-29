@@ -31,7 +31,7 @@ abstract class Content {
 	/**
 	 * @return string
 	 */
-	public function getModel() {
+	final public function getModel() {
 		return $this->model_id;
 	}
 
@@ -45,7 +45,7 @@ abstract class Content {
 	 * Has the content been changed since object construction (this shouldn't happen!)
 	 * @return bool
 	 */
-	public function hasChanged() {
+	final public function hasChanged() {
 		return $this->initialHash !== $this->getHash();
 	}
 
