@@ -44,6 +44,13 @@ class WikitextContent extends Content {
 	}
 
 	/**
+	 * @param $data
+	 */
+	public function setNativeData( $data ) {
+		$this->text = $data;
+	}
+
+	/**
 	 * @param string $text
 	 *
 	 * @throws InvalidArgumentException
@@ -52,7 +59,7 @@ class WikitextContent extends Content {
 		if( !is_string( $text ) ) {
 			throw new InvalidArgumentException( '$text needs to be a string' );
 		}
-		$this->text = $text;
+		$this->setNativeData( $text );
 	}
 
 	/**
