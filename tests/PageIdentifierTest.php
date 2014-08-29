@@ -13,7 +13,7 @@ class PageIdentifierTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider provideValidConstruction
 	 */
-	public function testValidConstruction( $title, $pageid ) {
+	public function testValidConstruction( $title, $pageid, $identifiesPage ) {
 		$pageIdentifier = new PageIdentifier( $title, $pageid );
 		if( is_string( $title ) ) {
 			$this->assertEquals( new Title( $title ), $pageIdentifier->getTitle() );
@@ -21,14 +21,15 @@ class PageIdentifierTest extends \PHPUnit_Framework_TestCase {
 			$this->assertEquals( $title, $pageIdentifier->getTitle() );
 		}
 		$this->assertEquals( $pageid, $pageIdentifier->getId() );
+		$this->assertEquals( $identifiesPage, $pageIdentifier->identifiesPage() );
 	}
 
 	public function provideValidConstruction() {
 		return array(
-			array( null, null ),
-			array( new Title( 'Foo' ), null ),
-			array( new Title( 'Foo', 2 ), null ),
-			array( null, 3 ),
+			array( null, null, false ),
+			array( new Title( 'Foo' ), null, true ),
+			array( new Title( 'Foo', 2 ), null, true ),
+			array( null, 3, true ),
 		);
 	}
 

@@ -43,7 +43,16 @@ class PageIdentifier {
 		return $this->title;
 	}
 
-
+	/**
+	 * Does this object identify a page
+	 * @return bool
+	 */
+	public function identifiesPage() {
+		if( is_null( $this->title ) && is_null( $this->id ) ) {
+			return false;
+		}
+		return true;
+	}
 
 }
  
