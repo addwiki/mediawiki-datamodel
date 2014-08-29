@@ -3,6 +3,7 @@
 namespace Mediawiki\DataModel\Test;
 
 use Mediawiki\DataModel\Page;
+use Mediawiki\DataModel\PageIdentifier;
 use Mediawiki\DataModel\Pages;
 
 /**
@@ -28,9 +29,9 @@ class PagesTest extends \PHPUnit_Framework_TestCase {
 			->getMock();
 
 		//todo mock these
-		$page1 = new Page( $mockTitle, 1, $mockRevisions );
-		$page2 = new Page( $mockTitle, 2, $mockRevisions );
-		$page4 = new Page( $mockTitle, 4, $mockRevisions );
+		$page1 = new Page( new PageIdentifier( $mockTitle, 1 ), $mockRevisions );
+		$page2 = new Page( new PageIdentifier( $mockTitle, 2 ), $mockRevisions );
+		$page4 = new Page( new PageIdentifier( $mockTitle, 4 ), $mockRevisions );
 
 		return array(
 			array( array( $page1 ), array( 1 => $page1 ) ),

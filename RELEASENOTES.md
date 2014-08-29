@@ -3,6 +3,9 @@ These are the release notes for the [mediawiki-datamodel](README.md).
 ## Version 0.5 (under development)
 * Implemented Log class
 * Implemented LogList class
+* Introduce PageIdentifier class
+* Revision objects now require a PageIdentifier object instead of a $pageId int
+* Page objects now require a PageIdentifier objects instead of a $title and $pageId
 * Page objects can be constructed without a Revisions object
 
 

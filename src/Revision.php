@@ -14,9 +14,9 @@ class Revision {
 	private $id;
 
 	/**
-	 * @var int|null of the page for the revision
+	 * @var PageIdentifier of the page for the revision
 	 */
-	private $pageId;
+	private $pageIdentifier;
 
 	/**
 	 * @var Content
@@ -40,18 +40,21 @@ class Revision {
 
 	/**
 	 * @param Content $content
-	 * @param int|null $pageId
+	 * @param PageIdentifier|null $pageIdentifier
 	 * @param int|null $revId
 	 * @param EditInfo|null $editInfo
 	 * @param string|null $user
 	 * @param string|null $timestamp
 	 */
-	public function __construct( Content $content, $pageId = null, $revId = null, EditInfo $editInfo = null, $user = null, $timestamp = null ) {
+	public function __construct( Content $content, PageIdentifier $pageIdentifier = null, $revId = null, EditInfo $editInfo = null, $user = null, $timestamp = null ) {
 		if( is_null( $editInfo ) ) {
 			$editInfo = new EditInfo();
 		}
+		if( is_null( $pageIdentifier ) ) {
+			$pageIdentifier = new PageIdentifier();
+		}
 		$this->content = $content;
-		$this->pageId = $pageId;
+		$this->pageIdentifier = $pageIdentifier;
 		$this->id = $revId;
 		$this->editInfo = $editInfo;
 		$this->user = $user;
@@ -80,10 +83,10 @@ class Revision {
 	}
 
 	/**
-	 * @return int|null
+	 * @return PageIdentifier|null
 	 */
-	public function getPageId() {
-		return $this->pageId;
+	public function getPageIdentifier() {
+		return $this->pageIdentifier;
 	}
 
 	/**

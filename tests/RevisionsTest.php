@@ -2,6 +2,7 @@
 
 namespace Mediawiki\DataModel\Test;
 
+use Mediawiki\DataModel\PageIdentifier;
 use Mediawiki\DataModel\Revision;
 use Mediawiki\DataModel\Revisions;
 
@@ -25,9 +26,9 @@ class RevisionsTest extends \PHPUnit_Framework_TestCase {
 			->getMock();
 
 		//todo mock these
-		$rev1 = new Revision( $mockContent, 1, 1 );
-		$rev2 = new Revision( $mockContent, 1, 2 );
-		$rev4 = new Revision( $mockContent, 1, 4 );
+		$rev1 = new Revision( $mockContent, new PageIdentifier( null, 1 ), 1 );
+		$rev2 = new Revision( $mockContent, new PageIdentifier( null, 1 ), 2 );
+		$rev4 = new Revision( $mockContent, new PageIdentifier( null, 1 ), 4 );
 
 		return array(
 			array( array( $rev1 ), array( 1 => $rev1 ) ),
