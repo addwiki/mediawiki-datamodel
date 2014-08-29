@@ -20,6 +20,13 @@ class Title {
 	private $ns;
 
 	/**
+	 * @return self
+	 */
+	public static function factory() {
+		return new self();
+	}
+
+	/**
 	 * @return int
 	 */
 	public function getNs() {

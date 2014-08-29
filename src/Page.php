@@ -26,6 +26,13 @@ class Page {
 	}
 
 	/**
+	 * @return self
+	 */
+	public static function factory() {
+		return new self();
+	}
+
+	/**
 	 * @return int
 	 */
 	public function getId() {

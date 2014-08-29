@@ -43,6 +43,13 @@ class Revision {
 	}
 
 	/**
+	 * @return self
+	 */
+	public static function factory() {
+		return new self();
+	}
+
+	/**
 	 * @return Content
 	 */
 	public function getContent() {

@@ -17,6 +17,13 @@ class Pages {
 	private $pages = array();
 
 	/**
+	 * @return self
+	 */
+	public static function factory() {
+		return new self();
+	}
+
+	/**
 	 * @param Page[]|Pages $pages
 	 *
 	 * @throws InvalidArgumentException

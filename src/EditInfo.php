@@ -33,6 +33,13 @@ class EditInfo {
 	private $summary;
 
 	/**
+	 * @return self
+	 */
+	public static function factory() {
+		return new self();
+	}
+
+	/**
 	 * @return EditInfo::BOT|self::NOTBOT
 	 */
 	public function getBot() {

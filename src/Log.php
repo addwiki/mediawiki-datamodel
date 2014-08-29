@@ -48,6 +48,13 @@ class Log {
 	private $details;
 
 	/**
+	 * @return self
+	 */
+	public static function factory() {
+		return new self();
+	}
+
+	/**
 	 * @since 0.5
 	 * @return string
 	 */

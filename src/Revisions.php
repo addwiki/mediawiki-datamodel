@@ -17,6 +17,13 @@ class Revisions {
 	private $revisions = array();
 
 	/**
+	 * @return self
+	 */
+	public static function factory() {
+		return new self();
+	}
+
+	/**
 	 * @param Revision[]|Revisions $revisions
 	 *
 	 * @throws InvalidArgumentException

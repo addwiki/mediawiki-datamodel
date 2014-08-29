@@ -46,6 +46,13 @@ class User {
 	private $gender;
 
 	/**
+	 * @return self
+	 */
+	public static function factory() {
+		return new self();
+	}
+
+	/**
 	 * @return int
 	 */
 	public function getEditcount() {

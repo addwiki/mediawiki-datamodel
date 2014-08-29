@@ -17,6 +17,13 @@ class LogList {
 	private $logs = array();
 
 	/**
+	 * @return self
+	 */
+	public static function factory() {
+		return new self();
+	}
+
+	/**
 	 * @param Log[]|LogList $logs
 	 *
 	 * @throws InvalidArgumentException
