@@ -3,6 +3,7 @@
 namespace Mediawiki\DataModel\Test;
 
 use Mediawiki\DataModel\Page;
+use Mediawiki\DataModel\PageIdentifier;
 
 /**
  * @covers \Mediawiki\DataModel\Page
@@ -13,10 +14,9 @@ class PageTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider provideValidConstruction
 	 */
-	public function testValidConstruction( $title, $id, $revisions ) {
-		$page = new Page( $title, $id, $revisions );
-		$this->assertEquals( $title, $page->getTitle() );
-		$this->assertEquals( $id, $page->getId() );
+	public function testValidConstruction( $pageIdentifier, $revisions ) {
+		$page = new Page( $pageIdentifier, $revisions );
+		$this->assertEquals( $pageIdentifier, $page->getPageIdentifier() );
 		if( is_null( $revisions ) ) {
 			$this->assertInstanceOf( 'Mediawiki\DataModel\Revisions', $page->getRevisions() );
 		} else {
@@ -26,23 +26,10 @@ class PageTest extends \PHPUnit_Framework_TestCase {
 
 	public function provideValidConstruction() {
 		return array(
-			array( $this->newMockTitle(), 1, $this->newMockRevisions() ),
-			array( $this->newMockTitle(), 99999999, $this->newMockRevisions() ),
-			array( $this->newMockTitle(), 123, null ),
-		);
-	}
-
-	/**
-	 * @dataProvider provideInvalidConstruction
-	 */
-	public function testInvalidConstruction( $title, $id, $revisions ) {
-		$this->setExpectedException( 'InvalidArgumentException' );
-		new Page( $title, $id, $revisions );
-	}
-
-	public function provideInvalidConstruction() {
-		return array(
-			array( $this->newMockTitle(), 'foo', $this->newMockRevisions() ),
+			array( null, null ),
+			array( null, $this->newMockRevisions() ),
+			array( new PageIdentifier( $this->newMockTitle(), 1 ), $this->newMockRevisions() ),
+			array( new PageIdentifier( $this->newMockTitle(), 123 ), null ),
 		);
 	}
 

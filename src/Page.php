@@ -12,39 +12,30 @@ class Page {
 	private $revisions;
 
 	/**
-	 * @var int
+	 * @var PageIdentifier
 	 */
-	private $id;
+	private $pageIdentifier;
 
 	/**
-	 * @var Title
-	 */
-	private $title;
-
-	/**
-	 * @param Title $title
-	 * @param int $id
+	 * @param PageIdentifier $pageIdentifier
 	 * @param Revisions|null $revisions
 	 *
 	 * @throws InvalidArgumentException
 	 */
-	public function __construct( Title $title, $id, Revisions $revisions = null ) {
-		if( !is_int( $id ) ) {
-			throw new InvalidArgumentException( '$id must be an int' );
-		}
+	public function __construct( PageIdentifier $pageIdentifier = null , Revisions $revisions = null ) {
 		if( is_null( $revisions ) ) {
 			$revisions = new Revisions();
 		}
-		$this->id = $id;
 		$this->revisions = $revisions;
-		$this->title = $title;
+		$this->pageIdentifier = $pageIdentifier;
 	}
 
 	/**
+	 * @deprecated since 0.5
 	 * @return int
 	 */
 	public function getId() {
-		return $this->id;
+		return $this->pageIdentifier->getId();
 	}
 
 	/**
@@ -55,10 +46,18 @@ class Page {
 	}
 
 	/**
+	 * @deprecated since 0.5
 	 * @return Title
 	 */
 	public function getTitle() {
-		return $this->title;
+		return $this->pageIdentifier->getTitle();
+	}
+
+	/**
+	 * @return PageIdentifier
+	 */
+	public function getPageIdentifier() {
+		return $this->pageIdentifier;
 	}
 
 } 

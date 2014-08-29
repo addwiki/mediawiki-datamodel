@@ -2,6 +2,7 @@
 
 namespace Mediawiki\DataModel\Test;
 
+use Mediawiki\DataModel\PageIdentifier;
 use Mediawiki\DataModel\Revision;
 
 /**
@@ -13,10 +14,15 @@ class RevisionTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider provideValidConstruction
 	 */
-	public function testValidConstruction( $content, $pageid, $id, $editInfo, $user, $timestamp ) {
-		$rev = new Revision( $content, $pageid, $id, $editInfo, $user, $timestamp );
+	public function testValidConstruction( $content, $pageIdentifier, $id, $editInfo, $user, $timestamp ) {
+		$rev = new Revision( $content, $pageIdentifier, $id, $editInfo, $user, $timestamp );
 		$this->assertEquals( $content, $rev->getContent() );
-		$this->assertEquals( $pageid, $rev->getPageId() );
+		if( !is_null( $pageIdentifier ) ) {
+			$this->assertEquals( $pageIdentifier, $rev->getPageIdentifier() );
+		} else {
+			$this->assertInstanceOf( '\Mediawiki\DataModel\PageIdentifier', $rev->getPageIdentifier() );
+		}
+
 		$this->assertEquals( $id, $rev->getId() );
 		if( !is_null( $editInfo ) ) {
 			$this->assertEquals( $editInfo, $rev->getEditInfo() );
@@ -37,11 +43,11 @@ class RevisionTest extends \PHPUnit_Framework_TestCase {
 
 		return array(
 			array( $mockContent, null, null, null, null, null ),
-			array( $mockContent, 1, null , null, null,null ),
-			array( $mockContent, 1, 1 , null, null, null ),
-			array( $mockContent, 1, 1 , $mockEditInfo, null, null ),
-			array( $mockContent, 1, 1 , $mockEditInfo, 'foo', null ),
-			array( $mockContent, 1, 1 , $mockEditInfo, 'foo', '20141212121212' ),
+			array( $mockContent, new PageIdentifier( null, 1 ), null , null, null,null ),
+			array( $mockContent, new PageIdentifier( null, 1 ), 1 , null, null, null ),
+			array( $mockContent, new PageIdentifier( null, 2 ), 1 , $mockEditInfo, null, null ),
+			array( $mockContent, new PageIdentifier( 'FooBar' ), 1 , $mockEditInfo, 'foo', null ),
+			array( $mockContent, new PageIdentifier( 'FooBar', 3 ), 1 , $mockEditInfo, 'foo', '20141212121212' ),
 		);
 	}
 
