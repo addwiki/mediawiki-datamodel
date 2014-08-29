@@ -48,27 +48,6 @@ class Log {
 	private $details;
 
 	/**
-	 * @param int $id
-	 * @param string $type
-	 * @param string $action
-	 * @param string $timestamp
-	 * @param string $user
-	 * @param Page $page
-	 * @param string $comment
-	 * @param array $details
-	 */
-	public function __construct( $id, $type, $action, $timestamp, $user, $page, $comment, $details ) {
-		$this->id = $id;
-		$this->type = $type;
-		$this->action = $action;
-		$this->timestamp = $timestamp;
-		$this->user = $user;
-		$this->page = $page;
-		$this->comment = $comment;
-		$this->details = $details;
-	}
-
-	/**
 	 * @since 0.5
 	 * @return string
 	 */

@@ -14,15 +14,7 @@ class Pages {
 	/**
 	 * @var Page[]
 	 */
-	private $pages;
-
-	/**
-	 * @param Page[] $pages
-	 */
-	public function __construct( $pages = array() ) {
-		$this->pages = array();
-		$this->addPages( $pages );
-	}
+	private $pages = array();
 
 	/**
 	 * @param Page[]|Pages $pages

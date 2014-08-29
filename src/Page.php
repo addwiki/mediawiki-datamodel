@@ -21,23 +21,8 @@ class Page {
 	 */
 	private $title;
 
-	/**
-	 * @param Title $title
-	 * @param int $id
-	 * @param Revisions|null $revisions
-	 *
-	 * @throws InvalidArgumentException
-	 */
-	public function __construct( Title $title, $id, Revisions $revisions = null ) {
-		if( !is_int( $id ) ) {
-			throw new InvalidArgumentException( '$id must be an int' );
-		}
-		if( is_null( $revisions ) ) {
-			$revisions = new Revisions();
-		}
-		$this->id = $id;
-		$this->revisions = $revisions;
-		$this->title = $title;
+	public function __construct() {
+		$this->revisions = new Revisions();
 	}
 
 	/**
@@ -63,9 +48,13 @@ class Page {
 
 	/**
 	 * @param int $id
+	 * @throws \InvalidArgumentException
 	 * @return $this
 	 */
 	public function setId( $id ) {
+		if( !is_int( $id ) ) {
+			throw new InvalidArgumentException( '$id must be an int' );
+		}
 		$this->id = $id;
 		return $this;
 	}

@@ -20,23 +20,6 @@ class Title {
 	private $ns;
 
 	/**
-	 * @param string $title
-	 * @param int $ns
-	 *
-	 * @throws InvalidArgumentException
-	 */
-	public function __construct( $title, $ns = 0 ) {
-		if( !is_string( $title ) ) {
-			throw new InvalidArgumentException( '$title must be a string' );
-		}
-		if( !is_int( $ns ) ) {
-			throw new InvalidArgumentException( '$ns must be an int' );
-		}
-		$this->title = $title;
-		$this->ns = $ns;
-	}
-
-	/**
 	 * @return int
 	 */
 	public function getNs() {
@@ -52,18 +35,26 @@ class Title {
 
 	/**
 	 * @param int $ns
+	 * @throws \InvalidArgumentException
 	 * @return $this
 	 */
 	public function setNs( $ns ) {
+		if( !is_int( $ns ) ) {
+			throw new InvalidArgumentException( '$ns must be an int' );
+		}
 		$this->ns = $ns;
 		return $this;
 	}
 
 	/**
 	 * @param string $title
+	 * @throws \InvalidArgumentException
 	 * @return $this
 	 */
 	public function setTitle( $title ) {
+		if( !is_string( $title ) ) {
+			throw new InvalidArgumentException( '$title must be a string' );
+		}
 		$this->title = $title;
 		return $this;
 	}

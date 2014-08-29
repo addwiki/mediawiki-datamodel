@@ -38,24 +38,8 @@ class Revision {
 	 */
 	private $timestamp;
 
-	/**
-	 * @param Content $content
-	 * @param int|null $pageId
-	 * @param int|null $revId
-	 * @param EditInfo|null $editInfo
-	 * @param string|null $user
-	 * @param string|null $timestamp
-	 */
-	public function __construct( Content $content, $pageId = null, $revId = null, EditInfo $editInfo = null, $user = null, $timestamp = null ) {
-		if( is_null( $editInfo ) ) {
-			$editInfo = new EditInfo();
-		}
-		$this->content = $content;
-		$this->pageId = $pageId;
-		$this->id = $revId;
-		$this->editInfo = $editInfo;
-		$this->user = $user;
-		$this->timestamp = $timestamp;
+	public function __construct() {
+		$this->editInfo = new EditInfo();
 	}
 
 	/**

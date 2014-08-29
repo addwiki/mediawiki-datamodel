@@ -14,15 +14,7 @@ class Revisions {
 	/**
 	 * @var Revision[]
 	 */
-	private $revisions;
-
-	/**
-	 * @param Revisions[] $revisions
-	 */
-	public function __construct( $revisions = array() ) {
-		$this->revisions = array();
-		$this->addRevisions( $revisions );
-	}
+	private $revisions = array();
 
 	/**
 	 * @param Revision[]|Revisions $revisions

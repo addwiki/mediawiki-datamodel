@@ -14,15 +14,7 @@ class LogList {
 	/**
 	 * @var Log[]
 	 */
-	private $logs;
-
-	/**
-	 * @param Log[] $logs
-	 */
-	public function __construct( $logs = array() ) {
-		$this->logs = array();
-		$this->addLogs( $logs );
-	}
+	private $logs = array();
 
 	/**
 	 * @param Log[]|LogList $logs
