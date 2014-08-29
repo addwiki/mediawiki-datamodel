@@ -50,5 +50,23 @@ class Title {
 		return $this->title;
 	}
 
+	/**
+	 * @param int $ns
+	 * @return $this
+	 */
+	public function setNs( $ns ) {
+		$this->ns = $ns;
+		return $this;
+	}
+
+	/**
+	 * @param string $title
+	 * @return $this
+	 */
+	public function setTitle( $title ) {
+		$this->title = $title;
+		return $this;
+	}
+
 
 } 

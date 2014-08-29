@@ -76,4 +76,31 @@ class EditInfo {
 		return $this->summary;
 	}
 
+	/**
+	 * @param EditInfo $bot
+	 * @return $this
+	 */
+	public function setBot( $bot ) {
+		$this->bot = $bot;
+		return $this;
+	}
+
+	/**
+	 * @param EditInfo $minor
+	 * @return $this
+	 */
+	public function setMinor( $minor ) {
+		$this->minor = $minor;
+		return $this;
+	}
+
+	/**
+	 * @param string $summary
+	 * @return $this
+	 */
+	public function setSummary( $summary ) {
+		$this->summary = $summary;
+		return $this;
+	}
+
 }

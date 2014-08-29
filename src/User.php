@@ -140,5 +140,68 @@ class User {
 		return $this->rights;
 	}
 
+	/**
+	 * @param int $editcount
+	 * @return $this
+	 */
+	public function setEditcount( $editcount ) {
+		$this->editcount = $editcount;
+		return $this;
+	}
+
+	/**
+	 * @param string $gender
+	 * @return $this
+	 */
+	public function setGender( $gender ) {
+		$this->gender = $gender;
+		return $this;
+	}
+
+	/**
+	 * @param array $groups
+	 * @return $this
+	 */
+	public function setGroups( $groups ) {
+		$this->groups = $groups;
+		return $this;
+	}
+
+	/**
+	 * @param int $id
+	 * @return $this
+	 */
+	public function setId( $id ) {
+		$this->id = $id;
+		return $this;
+	}
+
+	/**
+	 * @param string $name
+	 * @return $this
+	 */
+	public function setName( $name ) {
+		$this->name = $name;
+		return $this;
+	}
+
+	/**
+	 * @param string $registration
+	 * @return $this
+	 */
+	public function setRegistration( $registration ) {
+		$this->registration = $registration;
+		return $this;
+	}
+
+	/**
+	 * @param array $rights
+	 * @return $this
+	 */
+	public function setRights( $rights ) {
+		$this->rights = $rights;
+		return $this;
+	}
+
 
 } 

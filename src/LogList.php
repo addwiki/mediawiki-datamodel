@@ -96,4 +96,14 @@ class LogList {
 	public function toArray() {
 		return $this->logs;
 	}
+
+	/**
+	 * @param Log[] $logs
+	 * @return $this
+	 */
+	public function setLogs( $logs ) {
+		$this->logs = $logs;
+		return $this;
+	}
+
 }

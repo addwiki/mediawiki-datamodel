@@ -99,4 +99,14 @@ class Revisions {
 	public function toArray() {
 		return $this->revisions;
 	}
+
+	/**
+	 * @param Revision[] $revisions
+	 * @return $this
+	 */
+	public function setRevisions( $revisions ) {
+		$this->revisions = $revisions;
+		return $this;
+	}
+
 }

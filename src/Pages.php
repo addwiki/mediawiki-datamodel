@@ -96,4 +96,15 @@ class Pages {
 	public function toArray() {
 		return $this->pages;
 	}
+
+	/**
+	 * @param Page[] $pages
+	 * @return $this
+	 */
+	public function setPages( $pages ) {
+		$this->pages = $pages;
+		return $this;
+	}
+
+
 }

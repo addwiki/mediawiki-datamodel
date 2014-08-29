@@ -61,4 +61,13 @@ abstract class Content {
 	 */
 	abstract public function getNativeData();
 
+	/**
+	 * @param string $model_id
+	 * @return $this
+	 */
+	final public function setModelId( $model_id ) {
+		$this->model_id = $model_id;
+		return $this;
+	}
+
 } 

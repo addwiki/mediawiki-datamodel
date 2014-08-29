@@ -100,4 +100,58 @@ class Revision {
 		return $this->timestamp;
 	}
 
+	/**
+	 * @param Content $content
+	 * @return $this
+	 */
+	public function setContent( $content ) {
+		$this->content = $content;
+		return $this;
+	}
+
+	/**
+	 * @param EditInfo $editInfo
+	 * @return $this
+	 */
+	public function setEditInfo( $editInfo ) {
+		$this->editInfo = $editInfo;
+		return $this;
+	}
+
+	/**
+	 * @param int $id
+	 * @return $this
+	 */
+	public function setId( $id ) {
+		$this->id = $id;
+		return $this;
+	}
+
+	/**
+	 * @param int|null $pageId
+	 * @return $this
+	 */
+	public function setPageId( $pageId ) {
+		$this->pageId = $pageId;
+		return $this;
+	}
+
+	/**
+	 * @param null|string $timestamp
+	 * @return $this
+	 */
+	public function setTimestamp( $timestamp ) {
+		$this->timestamp = $timestamp;
+		return $this;
+	}
+
+	/**
+	 * @param null|string $user
+	 * @return $this
+	 */
+	public function setUser( $user ) {
+		$this->user = $user;
+		return $this;
+	}
+
 }

@@ -61,4 +61,33 @@ class Page {
 		return $this->title;
 	}
 
+	/**
+	 * @param int $id
+	 * @return $this
+	 */
+	public function setId( $id ) {
+		$this->id = $id;
+		return $this;
+	}
+
+	/**
+	 * @param Revisions $revisions
+	 * @return $this
+	 */
+	public function setRevisions( $revisions ) {
+		$this->revisions = $revisions;
+		return $this;
+	}
+
+	/**
+	 * @param Title $title
+	 * @return $this
+	 */
+	public function setTitle( $title ) {
+		$this->title = $title;
+		return $this;
+	}
+
+
+
 } 
