@@ -17,19 +17,13 @@ class PageIdentifier {
 	private $title;
 
 	/**
-	 * @param Title|string|null $title
+	 * @param Title|null $title
 	 * @param int|null $id
 	 * @throws InvalidArgumentException
 	 */
-	public function __construct( $title = null, $id = null ) {
-		if( !is_string( $title ) && !$title instanceof Title && !is_null( $title ) ) {
-			throw new InvalidArgumentException( '$title must be a string or a Title object' );
-		}
+	public function __construct( Title $title = null, $id = null ) {
 		if( !is_int( $id ) && !is_null( $id ) ) {
 			throw new InvalidArgumentException( '$id must be an int' );
-		}
-		if( is_string( $title ) ) {
-			$title = new Title( $title );
 		}
 		$this->title = $title;
 		$this->id = $id;

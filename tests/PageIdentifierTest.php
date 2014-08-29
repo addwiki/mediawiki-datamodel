@@ -26,11 +26,9 @@ class PageIdentifierTest extends \PHPUnit_Framework_TestCase {
 	public function provideValidConstruction() {
 		return array(
 			array( null, null ),
-			array( 'Foo', null ),
 			array( new Title( 'Foo' ), null ),
 			array( new Title( 'Foo', 2 ), null ),
 			array( null, 3 ),
-			array( 'Bar', 3 ),
 		);
 	}
 

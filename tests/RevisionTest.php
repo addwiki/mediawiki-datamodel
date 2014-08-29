@@ -40,14 +40,17 @@ class RevisionTest extends \PHPUnit_Framework_TestCase {
 		$mockEditInfo = $this->getMockBuilder( '\Mediawiki\DataModel\EditInfo' )
 			->disableOriginalConstructor()
 			->getMock();
+		$mockTitle = $this->getMockBuilder( 'Mediawiki\DataModel\Title' )
+			->disableOriginalConstructor()
+			->getMock();
 
 		return array(
 			array( $mockContent, null, null, null, null, null ),
 			array( $mockContent, new PageIdentifier( null, 1 ), null , null, null,null ),
 			array( $mockContent, new PageIdentifier( null, 1 ), 1 , null, null, null ),
 			array( $mockContent, new PageIdentifier( null, 2 ), 1 , $mockEditInfo, null, null ),
-			array( $mockContent, new PageIdentifier( 'FooBar' ), 1 , $mockEditInfo, 'foo', null ),
-			array( $mockContent, new PageIdentifier( 'FooBar', 3 ), 1 , $mockEditInfo, 'foo', '20141212121212' ),
+			array( $mockContent, new PageIdentifier( $mockTitle ), 1 , $mockEditInfo, 'foo', null ),
+			array( $mockContent, new PageIdentifier( $mockTitle, 3 ), 1 , $mockEditInfo, 'foo', '20141212121212' ),
 		);
 	}
 
