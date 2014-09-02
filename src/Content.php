@@ -2,11 +2,13 @@
 
 namespace Mediawiki\DataModel;
 
+use LogicException;
+
 /**
  * Class Representing the content of a revision
  * @author Adam Shorland
  */
-abstract class Content {
+class Content {
 
 	/**
 	 * @var string sha1 hash of the object content upon creation
@@ -14,22 +16,54 @@ abstract class Content {
 	private $initialHash;
 
 	/**
-	 * Should always be called AFTER overriding constructors so a hash can be created
+	 * @var mixed
 	 */
-	public function __construct() {
+	private $data;
+
+	/**
+	 * @var string|null
+	 */
+	private $model;
+
+	/**
+	 * Should always be called AFTER overriding constructors so a hash can be created
+	 *
+	 * @param mixed $data
+	 * @param string|null $model
+	 */
+	public function __construct( $data, $model = null ) {
+		$this->data = $data;
+		$this->model = $model;
 		$this->initialHash = $this->getHash();
 	}
 
 	/**
 	 * @return string
 	 */
-	abstract public function getModel();
+	public function getModel() {
+		return $this->model;
+	}
 
 	/**
 	 * Returns a sha1 hash of the content
+	 *
+	 * @throws LogicException
 	 * @return string
 	 */
-	abstract public function getHash();
+	public function getHash() {
+		$data = $this->getData();
+		if( is_object( $data ) ) {
+			if( method_exists( $data, 'getHash' ) ) {
+				return $data->getHash();
+			} else {
+				return sha1( serialize( $data ) );
+			}
+		}
+		if( is_string( $data ) ) {
+			return sha1( $data );
+		}
+		throw new LogicException( "Cant get hash for data of type: " . gettype( $data ) );
+	}
 
 	/**
 	 * Has the content been changed since object construction (this shouldn't happen!)
@@ -40,15 +74,10 @@ abstract class Content {
 	}
 
 	/**
-	 * Returns native representation of the data. Interpretation depends on
-	 * the content model used, as given by getModel().
-	 *
-	 * @return mixed The native representation of the content. Could be a
-	 *    string, a nested array structure, an object, a binary blob...
-	 *    anything, really.
-	 *
-	 * @note Caller must be aware of content model!
+	 * @return mixed
 	 */
-	abstract public function getData();
+	public function getData() {
+		return $this->data;
+	}
 
 } 

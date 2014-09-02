@@ -8,8 +8,9 @@ These are the release notes for the [mediawiki-datamodel](README.md).
 * Page objects now require a PageIdentifier objects instead of a $title and $pageId
 * Page objects can be constructed without a Revisions object
 * Content getNativeData renamed to getData
-* Content constructor no longer takes the modelid
+* Content constructor changed, now takes data and optional model
 * Content has new method getModel in places of random constants
+* Removed WikitextContent class. Content is no longer abstract.
 
 
 ## Version 0.4 (2014-07-08)
