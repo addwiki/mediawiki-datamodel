@@ -33,7 +33,7 @@ class WikitextContentTest extends \PHPUnit_Framework_TestCase {
 	public function testValidConstruction( $text ) {
 		$content = new WikitextContent( $text );
 		$this->assertEquals( $text, $content->getText() );
-		$this->assertEquals( $text, $content->getNativeData() );
+		$this->assertEquals( $text, $content->getData() );
 	}
 
 	/**

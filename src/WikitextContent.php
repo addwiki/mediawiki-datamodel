@@ -9,8 +9,6 @@ use InvalidArgumentException;
  */
 class WikitextContent extends Content {
 
-	const contentModel = 'wikitext';
-
 	/**
 	 * @var string
 	 */
@@ -18,15 +16,10 @@ class WikitextContent extends Content {
 
 	/**
 	 * @param string $text
-	 *
-	 * @throws InvalidArgumentException
 	 */
 	public function __construct( $text ) {
-		if( !is_string( $text ) ) {
-			throw new InvalidArgumentException( '$text needs to be a string' );
-		}
-		$this->text = $text;
-		parent::__construct( self::contentModel );
+		$this->setText( $text );
+		parent::__construct();
 	}
 
 	/**
@@ -39,7 +32,7 @@ class WikitextContent extends Content {
 	/**
 	 * @return string
 	 */
-	public function getNativeData() {
+	public function getData() {
 		return $this->text;
 	}
 
@@ -62,4 +55,10 @@ class WikitextContent extends Content {
 		return sha1( $this->text );
 	}
 
-} 
+	/**
+	 * @return string
+	 */
+	public function getModel() {
+		return 'wikitext';
+	}
+}

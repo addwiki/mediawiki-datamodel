@@ -9,31 +9,21 @@ namespace Mediawiki\DataModel;
 abstract class Content {
 
 	/**
-	 * Name of the content model this Content object represents.
-	 * @var string $model_id
-	 */
-	protected $model_id;
-
-	/**
 	 * @var string sha1 hash of the object content upon creation
 	 */
 	private $initialHash;
 
 	/**
 	 * Should always be called AFTER overriding constructors so a hash can be created
-	 * @param string $modelId
 	 */
-	public function __construct( $modelId ) {
-		$this->model_id = $modelId;
+	public function __construct() {
 		$this->initialHash = $this->getHash();
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getModel() {
-		return $this->model_id;
-	}
+	abstract public function getModel();
 
 	/**
 	 * Returns a sha1 hash of the content
@@ -59,6 +49,6 @@ abstract class Content {
 	 *
 	 * @note Caller must be aware of content model!
 	 */
-	abstract public function getNativeData();
+	abstract public function getData();
 
 } 
