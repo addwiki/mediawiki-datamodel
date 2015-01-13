@@ -1,17 +1,22 @@
 These are the release notes for the [mediawiki-datamodel](README.md).
 
-## Version 0.5 (under development)
-* Implemented Log class
-* Implemented LogList class
-* Introduce PageIdentifier class
+## Version 0.5 (2015-01-13)
+
+#### Compatibility  changes
+
 * Revision objects now require a PageIdentifier object instead of a $pageId int
 * Page objects now require a PageIdentifier objects instead of a $title and $pageId
-* Page objects can be constructed without a Revisions object
 * Content getNativeData renamed to getData
 * Content constructor changed, now takes data and optional model
 * Content has new method getModel in places of random constants
 * Removed WikitextContent class. Content is no longer abstract.
 
+#### New features
+
+* Implemented Log class
+* Implemented LogList class
+* Introduce PageIdentifier class
+* Page objects can be constructed without a Revisions object
 
 ## Version 0.4 (2014-07-08)
 

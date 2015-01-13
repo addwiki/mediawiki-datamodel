@@ -12,4 +12,4 @@ On Packagist:
 
 Use composer to install the library and all its dependencies:
 
-    composer require "addwiki/mediawiki-datamodel:~0.4.0"
+    composer require "addwiki/mediawiki-datamodel:~0.5.0"
