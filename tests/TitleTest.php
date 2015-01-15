@@ -15,6 +15,7 @@ class TitleTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testValidConstruction( $title, $ns ) {
 		$titleObj = new Title( $title, $ns );
+		$this->assertEquals( $title, $titleObj->getText() );
 		$this->assertEquals( $title, $titleObj->getTitle() );
 		$this->assertEquals( $ns, $titleObj->getNs() );
 	}

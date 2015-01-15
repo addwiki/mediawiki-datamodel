@@ -1,5 +1,10 @@
 These are the release notes for the [mediawiki-datamodel](README.md).
 
+## Version 0.6 (development)
+
+* Title::getTitle is deprecated
+* Title::getText introduced to replace getTitle
+
 ## Version 0.5 (2015-01-13)
 
 #### Compatibility  changes

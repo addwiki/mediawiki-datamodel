@@ -38,6 +38,7 @@ class Title {
 
 	/**
 	 * @return int
+	 * @since 0.1
 	 */
 	public function getNs() {
 		return $this->ns;
@@ -45,9 +46,18 @@ class Title {
 
 	/**
 	 * @return string
+	 * @since 0.6
+	 */
+	public function getText() {
+		return $this->title;
+	}
+
+	/**
+	 * @return string
+	 * @deprecated in 0.6 use getText (makes things look cleaner)
 	 */
 	public function getTitle() {
-		return $this->title;
+		return $this->getText();
 	}
 
 
