@@ -76,6 +76,24 @@ class LogList {
 		return $this->logs[ max( array_keys( $this->logs ) ) ];
 	}
 
+	/**
+	 * @since 0.6
+	 * @return Log|null Log or null if there is no log
+	 */
+	public function getOldest() {
+		if( empty( $this->logs ) ) {
+			return null;
+		}
+		return $this->logs[ min( array_keys( $this->logs ) ) ];
+	}
+
+	/**
+	 * @since 0.6
+	 * @return bool
+	 */
+	public function isEmpty() {
+		return empty( $this->logs );
+	}
 
 	/**
 	 * @param int $id
