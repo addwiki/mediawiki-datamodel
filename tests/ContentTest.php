@@ -23,7 +23,6 @@ class ContentTest extends PHPUnit_Framework_TestCase {
 			array( '', null ),
 			array( 'foo', null ),
 			array( new \stdClass(), null ),
-			array( new \Exception( 'foo' ), null ),
 		);
 	}
 
