@@ -40,9 +40,9 @@ class Log implements JsonSerializable {
 	private $comment;
 
 	/**
-	 * @var Page
+	 * @var PageIdentifier
 	 */
-	private $page;
+	private $pageIdentifier;
 
 	/**
 	 * @var array
@@ -55,17 +55,17 @@ class Log implements JsonSerializable {
 	 * @param string $action
 	 * @param string $timestamp
 	 * @param string $user
-	 * @param Page $page
+	 * @param PageIdentifier $pageIdentifier
 	 * @param string $comment
 	 * @param array $details
 	 */
-	public function __construct( $id, $type, $action, $timestamp, $user, $page, $comment, $details ) {
+	public function __construct( $id, $type, $action, $timestamp, $user, $pageIdentifier, $comment, $details ) {
 		$this->id = $id;
 		$this->type = $type;
 		$this->action = $action;
 		$this->timestamp = $timestamp;
 		$this->user = $user;
-		$this->page = $page;
+		$this->pageIdentifier = $pageIdentifier;
 		$this->comment = $comment;
 		$this->details = $details;
 	}
@@ -103,11 +103,11 @@ class Log implements JsonSerializable {
 	}
 
 	/**
-	 * @since 0.5
-	 * @return \Mediawiki\DataModel\Page
+	 * @since 0.6
+	 * @return PageIdentifier
 	 */
-	public function getPage() {
-		return $this->page;
+	public function getPageIdentifier() {
+		return $this->pageIdentifier;
 	}
 
 	/**
@@ -144,7 +144,7 @@ class Log implements JsonSerializable {
 			'action' => $this->action,
 			'timestamp' => $this->timestamp,
 			'user' => $this->user,
-			'page' => $this->page,
+			'page' => $this->pageIdentifier,
 			'comment' => $this->comment,
 			'details' => $this->details,
 		);
