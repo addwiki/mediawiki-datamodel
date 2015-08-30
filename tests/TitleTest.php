@@ -47,4 +47,10 @@ class TitleTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function testJsonRoundTrip() {
+		$title = new Title( 'Foo', 19 );
+		$json = $title->jsonSerialize();
+		$this->assertEquals( $title, Title::jsonDeserialize( $json ) );
+	}
+
 } 

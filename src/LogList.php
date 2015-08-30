@@ -122,4 +122,17 @@ class LogList implements JsonSerializable {
 	public function jsonSerialize() {
 		return $this->toArray();
 	}
+
+	/**
+	 * @param array $json
+	 *
+	 * @return self
+	 */
+	public static function jsonDeserialize( $json ) {
+		$self = new LogList();
+		foreach ( $json as $logJson ) {
+			$self->addLog( Log::jsonDeserialize( $logJson ) );
+		}
+		return $self;
+	}
 }

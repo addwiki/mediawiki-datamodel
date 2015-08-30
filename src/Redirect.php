@@ -38,4 +38,16 @@ class Redirect implements JsonSerializable {
 		);
 	}
 
+	/**
+	 * @param array $json
+	 *
+	 * @return self
+	 */
+	public static function jsonDeserialize( $json ) {
+		return new self(
+			Title::jsonDeserialize( $json['from'] ),
+			Title::jsonDeserialize( $json['to'] )
+		);
+	}
+
 }

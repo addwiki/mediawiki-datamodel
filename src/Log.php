@@ -149,4 +149,23 @@ class Log implements JsonSerializable {
 			'details' => $this->details,
 		);
 	}
+
+	/**
+	 * @param array $json
+	 *
+	 * @return self
+	 */
+	public static function jsonDeserialize( $json ) {
+		return new self(
+			$json['id'],
+			$json['type'],
+			$json['action'],
+			$json['timestamp'],
+			$json['user'],
+			$json['page'],
+			$json['comment'],
+			$json['details']
+		);
+	}
+
 }

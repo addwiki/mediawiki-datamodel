@@ -71,4 +71,13 @@ class Title implements JsonSerializable {
 		);
 	}
 
+	/**
+	 * @param array $json
+	 *
+	 * @return self
+	 */
+	public static function jsonDeserialize( $json ) {
+		return new self( $json['title'], $json['ns'] );
+	}
+
 }
