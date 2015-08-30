@@ -2,7 +2,9 @@
 
 namespace Mediawiki\DataModel;
 
-class Redirect {
+use JsonSerializable;
+
+class Redirect implements JsonSerializable {
 
 	private $from;
 	private $to;
@@ -24,6 +26,16 @@ class Redirect {
 	 */
 	public function getTo() {
 		return $this->to;
+	}
+
+	/**
+	 * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+	 */
+	public function jsonSerialize() {
+		return array(
+			'from' => $this->from->jsonSerialize(),
+			'to' => $this->to->jsonSerialize(),
+		);
 	}
 
 }

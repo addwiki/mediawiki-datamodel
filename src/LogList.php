@@ -3,13 +3,14 @@
 namespace Mediawiki\DataModel;
 
 use InvalidArgumentException;
+use JsonSerializable;
 use RuntimeException;
 
 /**
  * Represents a collection of Log classes
  * @author Adam Shorland
  */
-class LogList {
+class LogList implements JsonSerializable {
 
 	/**
 	 * @var Log[]
@@ -113,5 +114,12 @@ class LogList {
 	 */
 	public function toArray() {
 		return $this->logs;
+	}
+
+	/**
+	 * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+	 */
+	public function jsonSerialize() {
+		return $this->toArray();
 	}
 }

@@ -2,10 +2,12 @@
 
 namespace Mediawiki\DataModel;
 
+use JsonSerializable;
+
 /**
  * @since 0.5
  */
-class Log {
+class Log implements JsonSerializable {
 
 	/**
 	 * @var int
@@ -132,4 +134,19 @@ class Log {
 		return $this->details;
 	}
 
+	/**
+	 * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+	 */
+	public function jsonSerialize() {
+		return array(
+			'id' => $this->id,
+			'type' => $this->type,
+			'action' => $this->action,
+			'timestamp' => $this->timestamp,
+			'user' => $this->user,
+			'page' => $this->page,
+			'comment' => $this->comment,
+			'details' => $this->details,
+		);
+	}
 }

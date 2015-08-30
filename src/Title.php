@@ -3,11 +3,12 @@
 namespace Mediawiki\DataModel;
 
 use InvalidArgumentException;
+use JsonSerializable;
 
 /**
  * @author Adam Shorland
  */
-class Title {
+class Title implements JsonSerializable {
 
 	/**
 	 * @var string
@@ -60,5 +61,14 @@ class Title {
 		return $this->getText();
 	}
 
+	/**
+	 * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+	 */
+	public function jsonSerialize() {
+		return array(
+			'title' => $this->title,
+			'ns' => $this->ns,
+		);
+	}
 
-} 
+}

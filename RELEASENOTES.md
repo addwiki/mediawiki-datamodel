@@ -6,6 +6,9 @@ These are the release notes for the [mediawiki-datamodel](README.md).
 * Title::getText introduced to replace getTitle
 * Implemented File class
 * Implemented Redirect class
+* Log now implements JsonSerializable
+* LogList now implements JsonSerializable
+* Title now implements JsonSerializable
 
 ## Version 0.5 (2015-01-13)
 
