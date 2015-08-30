@@ -9,6 +9,7 @@ These are the release notes for the [mediawiki-datamodel](README.md).
 * Log now implements JsonSerializable
 * LogList now implements JsonSerializable
 * Title now implements JsonSerializable
+* PageIdentifier now implements JsonSerializable
 * Log object now takes a PageIdentifier object instead of a Page object
 
 ## Version 0.5 (2015-01-13)

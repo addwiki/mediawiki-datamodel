@@ -144,7 +144,7 @@ class Log implements JsonSerializable {
 			'action' => $this->action,
 			'timestamp' => $this->timestamp,
 			'user' => $this->user,
-			'page' => $this->pageIdentifier,
+			'pageidentifier' => $this->pageIdentifier,
 			'comment' => $this->comment,
 			'details' => $this->details,
 		);
@@ -162,7 +162,7 @@ class Log implements JsonSerializable {
 			$json['action'],
 			$json['timestamp'],
 			$json['user'],
-			$json['page'],
+			PageIdentifier::jsonDeserialize( $json['pageidentifier'] ),
 			$json['comment'],
 			$json['details']
 		);

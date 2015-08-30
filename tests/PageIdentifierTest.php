@@ -33,5 +33,22 @@ class PageIdentifierTest extends \PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function provideRoundTripObjects() {
+		return array(
+			array( new PageIdentifier( null, null ) ),
+			array( new PageIdentifier( null, 44 ) ),
+			array( new PageIdentifier( new Title( 'someTitle', 12 ), null ) ),
+			array( new PageIdentifier( new Title( 'someTitle', 55 ), 99 ) ),
+		);
+	}
+
+	/**
+	 * @dataProvider provideRoundTripObjects
+	 */
+	public function testJsonRoundTrip( PageIdentifier $identifierObject ) {
+		$json = $identifierObject->jsonSerialize();
+		$this->assertEquals( $identifierObject, PageIdentifier::jsonDeserialize( $json ) );
+	}
+
 }
  

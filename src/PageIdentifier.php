@@ -3,8 +3,9 @@
 namespace Mediawiki\DataModel;
 
 use InvalidArgumentException;
+use JsonSerializable;
 
-class PageIdentifier {
+class PageIdentifier implements JsonSerializable {
 
 	/**
 	 * @var int|null
@@ -54,5 +55,31 @@ class PageIdentifier {
 		return true;
 	}
 
+	/**
+	 * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+	 */
+	public function jsonSerialize() {
+		$array = array();
+		if ( $this->id !== null ) {
+			$array['id'] = $this->id;
+		}
+		if ( $this->title !== null ) {
+			$array['title'] = $this->title->jsonSerialize();
+		}
+		return $array;
+	}
+
+	/**
+	 * @param array $array
+	 *
+	 * @returns self
+	 */
+	public static function jsonDeserialize( $array ) {
+		return new self(
+			isset( $array['title'] ) ? Title::jsonDeserialize( $array['title'] ) : null,
+			isset( $array['id'] ) ? $array['id'] : null
+
+		);
+	}
 }
  
