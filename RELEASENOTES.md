@@ -1,16 +1,24 @@
 These are the release notes for the [mediawiki-datamodel](README.md).
 
-## Version 0.6 (development)
+## Version 0.6 (2015-09-04)
+
+#### Compatibility  changes
+
+* Log object now takes a PageIdentifier object instead of a Page object
+
+#### Deprecations
 
 * Title::getTitle is deprecated
-* Title::getText introduced to replace getTitle
+
+#### New features
+
 * Implemented File class
 * Implemented Redirect class
+* Title::getText introduced to replace getTitle
 * Log now implements JsonSerializable
 * LogList now implements JsonSerializable
 * Title now implements JsonSerializable
 * PageIdentifier now implements JsonSerializable
-* Log object now takes a PageIdentifier object instead of a Page object
 
 ## Version 0.5 (2015-01-13)
 
