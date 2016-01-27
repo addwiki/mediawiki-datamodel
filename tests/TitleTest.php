@@ -6,7 +6,7 @@ use Mediawiki\DataModel\Title;
 
 /**
  * @covers \Mediawiki\DataModel\Title
- * @author Adam Shorland
+ * @author Addshore
  */
 class TitleTest extends \PHPUnit_Framework_TestCase {
 

@@ -7,7 +7,7 @@ use RuntimeException;
 
 /**
  * Represents a collection or revisions
- * @author Adam Shorland
+ * @author Addshore
  */
 class Revisions {
 

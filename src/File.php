@@ -5,7 +5,7 @@ namespace Mediawiki\DataModel;
 use InvalidArgumentException;
 
 /**
- * @author Adam Shorland
+ * @author Addshore
  */
 class File extends Page {
 

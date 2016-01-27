@@ -4,7 +4,7 @@ namespace Mediawiki\DataModel;
 
 /**
  * Representation of a version of content
- * @author Adam Shorland
+ * @author Addshore
  */
 class Revision {
 

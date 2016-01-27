@@ -7,7 +7,7 @@ use Mediawiki\DataModel\PageIdentifier;
 
 /**
  * @covers \Mediawiki\DataModel\File
- * @author Adam Shorland
+ * @author Addshore
  */
 class FileTest extends \PHPUnit_Framework_TestCase {
 

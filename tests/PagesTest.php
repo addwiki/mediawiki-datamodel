@@ -8,7 +8,7 @@ use Mediawiki\DataModel\Pages;
 
 /**
  * @covers \Mediawiki\DataModel\Pages
- * @author Adam Shorland
+ * @author Addshore
  */
 class PagesTest extends \PHPUnit_Framework_TestCase {
 

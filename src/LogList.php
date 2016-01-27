@@ -8,7 +8,7 @@ use RuntimeException;
 
 /**
  * Represents a collection of Log classes
- * @author Adam Shorland
+ * @author Addshore
  */
 class LogList implements JsonSerializable {
 

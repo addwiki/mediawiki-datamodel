@@ -6,7 +6,7 @@ use LogicException;
 
 /**
  * Class Representing the content of a revision
- * @author Adam Shorland
+ * @author Addshore
  */
 class Content {
 

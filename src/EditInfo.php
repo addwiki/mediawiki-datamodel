@@ -6,7 +6,7 @@ use InvalidArgumentException;
 
 /**
  * Represents flags that can be used when edits are made
- * @author Adam Shorland
+ * @author Addshore
  */
 class EditInfo {
 

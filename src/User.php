@@ -6,7 +6,7 @@ use InvalidArgumentException;
 
 /**
  * Represents a mediawiki user
- * @author Adam Shorland
+ * @author Addshore
  */
 class User {
 

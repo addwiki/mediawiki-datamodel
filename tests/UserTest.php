@@ -6,7 +6,7 @@ use Mediawiki\DataModel\User;
 
 /**
  * @covers \Mediawiki\DataModel\User
- * @author Adam Shorland
+ * @author Addshore
  */
 class UserTest extends \PHPUnit_Framework_TestCase {
 

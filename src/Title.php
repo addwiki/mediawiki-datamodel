@@ -6,7 +6,7 @@ use InvalidArgumentException;
 use JsonSerializable;
 
 /**
- * @author Adam Shorland
+ * @author Addshore
  */
 class Title implements JsonSerializable {
 

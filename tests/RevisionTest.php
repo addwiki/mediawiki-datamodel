@@ -7,7 +7,7 @@ use Mediawiki\DataModel\Revision;
 
 /**
  * @covers \Mediawiki\DataModel\Revision
- * @author Adam Shorland
+ * @author Addshore
  */
 class RevisionTest extends \PHPUnit_Framework_TestCase {
 

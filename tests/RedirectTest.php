@@ -7,7 +7,7 @@ use Mediawiki\DataModel\Title;
 
 /**
  * @covers \Mediawiki\DataModel\Redirect
- * @author Adam Shorland
+ * @author Addshore
  */
 class RedirectTest extends \PHPUnit_Framework_TestCase {
 

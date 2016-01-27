@@ -8,7 +8,7 @@ use Mediawiki\DataModel\PageIdentifier;
 
 /**
  * @covers \Mediawiki\DataModel\LogList
- * @author Adam Shorland
+ * @author Addshore
  */
 class LogListTest extends \PHPUnit_Framework_TestCase {
 
