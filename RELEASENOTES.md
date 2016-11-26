@@ -1,5 +1,11 @@
 These are the release notes for the [mediawiki-datamodel](README.md).
 
+## Version 0.7 (to be released)
+
+#### New features
+
+* Add NamespaceInfo class 
+
 ## Version 0.6 (2015-09-04)
 
 #### Compatibility  changes
