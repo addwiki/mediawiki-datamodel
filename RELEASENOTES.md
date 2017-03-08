@@ -1,6 +1,6 @@
 These are the release notes for the [mediawiki-datamodel](README.md).
 
-## Version 0.7 (to be released)
+## Version 0.7 (8th March 2017)
 
 #### New features
 
