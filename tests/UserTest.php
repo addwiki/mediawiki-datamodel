@@ -30,6 +30,7 @@ class UserTest extends \PHPUnit_Framework_TestCase {
 			array( 'Username', 1, 1, 'TIMESTAMP', array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'male' ),
 			array( 'Username', 1, 1, 'TIMESTAMP', array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'female' ),
 			array( 'Username', 99999999, 99999997, 'TIMESTAMP', array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'male' ),
+			array( 'Username', 1, 1, null, array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'female' ),
 		);
 	}
 
@@ -46,7 +47,6 @@ class UserTest extends \PHPUnit_Framework_TestCase {
 			array( 'Username', 1, 1, 'TIMESTAMP', 'bad', array(), 'male' ),
 			array( 'Username', 1, 1, 'TIMESTAMP', array( 'groups' => array(), 'implicitgroups' => array() ), 'bad', 'male' ),
 			array( 'Username', 1, 1, 'TIMESTAMP', array( 'groups' => array(), 'implicitgroups' => array() ), array(), 1 ),
-			array( 'Username', 1, 1, 219279148412, array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'male' ),
 			array( 'Username', 1, 'bad', 'TIMESTAMP', array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'male' ),
 			array( 'Username', 'bad', 1, 'TIMESTAMP', array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'male' ),
 			array( 14287941, 1, 1, 'TIMESTAMP', array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'male' ),

@@ -67,9 +67,6 @@ class User {
 		if( !is_int( $editcount ) ) {
 			throw new InvalidArgumentException( '$editcount must be an int' );
 		}
-		if( !is_string( $registration ) ) {
-			throw new InvalidArgumentException( '$registration must be a string' );
-		}
 		if( !is_array( $groups ) || !array_key_exists( 'groups', $groups ) || !array_key_exists( 'implicitgroups', $groups ) ) {
 			throw new InvalidArgumentException( '$groups must be an array or arrays with keys "groups" and "implicitgroups"' );
 		}
@@ -139,6 +136,5 @@ class User {
 	public function getRights() {
 		return $this->rights;
 	}
-
 
 } 
