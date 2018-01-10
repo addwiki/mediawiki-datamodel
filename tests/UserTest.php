@@ -30,6 +30,7 @@ class UserTest extends \PHPUnit_Framework_TestCase {
 			array( 'Username', 1, 1, 'TIMESTAMP', array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'male' ),
 			array( 'Username', 1, 1, 'TIMESTAMP', array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'female' ),
 			array( 'Username', 99999999, 99999997, 'TIMESTAMP', array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'male' ),
+			array( 'Username', 1, 1, null, array( 'groups' => array(), 'implicitgroups' => array() ), array(), 'female' ),
 		);
 	}
 
