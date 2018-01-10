@@ -1,5 +1,9 @@
 These are the release notes for the [mediawiki-datamodel](README.md).
 
+## Version 0.7.1 (10th January 2017)
+
+* [T184567](https://phabricator.wikimedia.org/T184567) `User` objects can now be created with a `null` `$registration`.
+
 ## Version 0.7 (8th March 2017)
 
 #### New features
